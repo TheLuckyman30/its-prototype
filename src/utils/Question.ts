@@ -1,4 +1,4 @@
-export interface Question {
+export interface QuestionType {
   id: string;
   kc: string;
   question: string;

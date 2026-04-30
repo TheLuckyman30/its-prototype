@@ -12,7 +12,11 @@ const pages: Page[] = [{ name: "Question", element: <Questions /> }];
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>(pages[0]);
 
-  return <div>{currentPage.element}</div>;
+  return (
+    <main className="flex justify-center items-center h-screen w-full">
+      {currentPage.element}
+    </main>
+  );
 }
 
 export default App;
