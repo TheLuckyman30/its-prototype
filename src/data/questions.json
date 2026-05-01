@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "kc": "Identify why the useState hook is necessary",
     "question": "Why is the useState hook necessary in a React component?",
     "options": {
@@ -18,7 +18,7 @@
     "correct": "A"
   },
   {
-    "id": "2",
+    "id": 2,
     "kc": "Identify why the useState hook is necessary",
     "question": "What problem does useState solve in a React component?",
     "options": {

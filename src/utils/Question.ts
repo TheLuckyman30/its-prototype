@@ -1,5 +1,5 @@
 export interface QuestionType {
-  id: string;
+  id: number;
   kc: string;
   question: string;
   options: { A: string; B: string; C: string; D: string };
