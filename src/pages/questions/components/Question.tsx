@@ -14,21 +14,15 @@ import { FeedbackText } from "./FeedbackText";
 interface QuestionProps {
   question: QuestionType;
   answer: string;
-  qaPairs: Map<string, string>;
-  setQaPairs: (newPairs: Map<string, string>) => void;
 }
 
-export function Question({
-  question,
-  answer,
-  qaPairs,
-  setQaPairs,
-}: QuestionProps) {
+export function Question({ question, answer }: QuestionProps) {
   const form = useForm({
     mode: "uncontrolled",
     initialValues: { answer },
   });
-  const { knowledgeComponents, updateKc } = useStudentStore();
+  const { knowledgeComponents, qaPairs, updateKc, setQaPairs } =
+    useStudentStore();
 
   const handleSubmit = ({ answer }: typeof form.values) => {
     const newPairs = new Map(qaPairs);
@@ -37,16 +31,15 @@ export function Question({
       const { pKnown, pWillLearn } = kc;
       const { pGuess, pSlip } = question;
       const isCorrect = question.options[answer].isCorrect;
-      const test = calcProbOfKnown(
+      const newProbOfKnown = calcProbOfKnown(
         pKnown,
         pWillLearn,
         pSlip,
         pGuess,
         isCorrect,
       );
-      const newKc = { ...kc, pKnown: test };
+      const newKc = { ...kc, pKnown: newProbOfKnown };
       updateKc(newKc);
-      console.log(newKc.pKnown);
     }
     newPairs.set(question.id, answer);
     setQaPairs(newPairs);

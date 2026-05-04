@@ -7,7 +7,6 @@ import questions from "@data/questions.json";
 export function Questions() {
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const qaPairs = useStudentStore((state) => state.qaPairs);
-  const setQaPairs = useStudentStore((state) => state.setQaPairs);
 
   const currentQuestion = questions[activeQuestion - 1];
   const questionElement = (
@@ -15,8 +14,6 @@ export function Questions() {
       key={currentQuestion.id}
       question={currentQuestion}
       answer={qaPairs.get(currentQuestion.id) ?? ""}
-      qaPairs={qaPairs}
-      setQaPairs={setQaPairs}
     />
   );
 
