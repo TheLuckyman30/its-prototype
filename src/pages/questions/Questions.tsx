@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Group } from "@mantine/core";
-import questions from "../../data/questions.json";
+import questions from "@data/questions.json";
 
 export function Questions() {
   const [questionIndex, setQuestionIndex] = useState<number>(0);

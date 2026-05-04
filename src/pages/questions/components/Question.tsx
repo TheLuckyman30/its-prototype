@@ -1,5 +1,5 @@
 import { useForm } from "@mantine/form";
-import type { QuestionType } from "../../../utils";
+import type { QuestionType } from "@utils";
 import {
   Button,
   Flex,
