@@ -1,1 +1,2 @@
-export type { QuestionType } from "./QuestionType";
+export type { QuestionType } from "./question-type";
+export type { KnowledgeComponent } from "./knowledge-component";
