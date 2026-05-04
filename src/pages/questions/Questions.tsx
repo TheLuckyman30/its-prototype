@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Group } from "@mantine/core";
+import { useStudentStore } from "@utils";
 import questions from "@data/questions.json";
 
 export function Questions() {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const [qaPairs, setQaPairs] = useState<Map<string, string>>(
-    new Map<string, string>(),
-  );
+  const qaPairs = useStudentStore((state) => state.qaPairs);
+  const setQaPairs = useStudentStore((state) => state.setQaPairs);
   const currentQuestion = questions[questionIndex];
 
   const nextQuestion = () => {
