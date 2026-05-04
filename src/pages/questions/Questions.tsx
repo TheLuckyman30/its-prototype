@@ -3,6 +3,7 @@ import { Question } from "./components/Question";
 import { Container, Flex, Pagination } from "@mantine/core";
 import { useStudentStore } from "@utils";
 import questions from "@data/questions.json";
+import { EndSection } from "./components/EndSection";
 
 export function Questions() {
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
@@ -17,6 +18,11 @@ export function Questions() {
     />
   );
 
+  const questionIds = questions.map((question) => question.id);
+  const answeredAllQuestions = questionIds.reduce((acc, id) => {
+    return acc && qaPairs.has(id);
+  }, true);
+
   return (
     <Container>
       <Flex gap={"5rem"} direction={"column"}>
@@ -26,6 +32,7 @@ export function Questions() {
           value={activeQuestion}
           onChange={setActiveQuestion}
         />
+        {answeredAllQuestions && <EndSection kcId={currentQuestion.kcId} />}
       </Flex>
     </Container>
   );

@@ -6,7 +6,7 @@ interface Option {
 
 export interface QuestionType {
   id: string;
-  kcIds: string[];
+  kcId: string;
   question: string;
   options: { [key: string]: Option };
   pSlip: number;

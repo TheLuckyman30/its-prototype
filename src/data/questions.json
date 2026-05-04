@@ -1,7 +1,7 @@
 [
   {
     "id": "q-1",
-    "kcIds": ["kc-1"],
+    "kcId": "kc-1",
     "question": "Why is the useState hook necessary in a React component?",
     "options": {
       "A": {
@@ -30,7 +30,7 @@
   },
   {
     "id": "q-2",
-    "kcIds": ["kc-1"],
+    "kcId": "kc-1",
     "question": "What problem does useState solve in a React component?",
     "options": {
       "A": {
