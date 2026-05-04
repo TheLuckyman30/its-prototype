@@ -25,8 +25,8 @@
         "isCorrect": false
       }
     },
-    "pSlip": 0.2,
-    "pGuess": 0.2
+    "pSlip": 0.1,
+    "pGuess": 0.3
   },
   {
     "id": "q-2",
@@ -55,6 +55,6 @@
       }
     },
     "pSlip": 0.2,
-    "pGuess": 0.2
+    "pGuess": 0.4
   }
 ]

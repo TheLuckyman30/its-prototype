@@ -1,5 +1,5 @@
 import { useForm } from "@mantine/form";
-import type { QuestionType } from "@utils";
+import { calcProbOfKnown, useStudentStore, type QuestionType } from "@utils";
 import {
   Button,
   Flex,
@@ -28,9 +28,26 @@ export function Question({
     mode: "uncontrolled",
     initialValues: { answer },
   });
+  const { knowledgeComponents, updateKc } = useStudentStore();
 
   const handleSubmit = ({ answer }: typeof form.values) => {
     const newPairs = new Map(qaPairs);
+    const kc = knowledgeComponents.find((kc) => kc.id === question.kcIds[0]);
+    if (kc) {
+      const { pKnown, pWillLearn } = kc;
+      const { pGuess, pSlip } = question;
+      const isCorrect = question.options[answer].isCorrect;
+      const test = calcProbOfKnown(
+        pKnown,
+        pWillLearn,
+        pSlip,
+        pGuess,
+        isCorrect,
+      );
+      const newKc = { ...kc, pKnown: test };
+      updateKc(newKc);
+      console.log(newKc.pKnown);
+    }
     newPairs.set(question.id, answer);
     setQaPairs(newPairs);
   };
