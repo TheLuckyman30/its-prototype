@@ -1,47 +1,34 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
-import { Button, Container, Flex, Group } from "@mantine/core";
+import { Container, Flex, Pagination } from "@mantine/core";
 import { useStudentStore } from "@utils";
 import questions from "@data/questions.json";
 
 export function Questions() {
-  const [questionIndex, setQuestionIndex] = useState<number>(0);
+  const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const qaPairs = useStudentStore((state) => state.qaPairs);
   const setQaPairs = useStudentStore((state) => state.setQaPairs);
-  const currentQuestion = questions[questionIndex];
 
-  const nextQuestion = () => {
-    if (questionIndex !== questions.length - 1) {
-      setQuestionIndex((currVal) => currVal + 1);
-    }
-  };
-  const prevQuestion = () => {
-    if (questionIndex !== 0) {
-      setQuestionIndex((currVal) => currVal - 1);
-    }
-  };
+  const currentQuestion = questions[activeQuestion - 1];
+  const questionElement = (
+    <Question
+      key={currentQuestion.id}
+      question={currentQuestion}
+      answer={qaPairs.get(currentQuestion.id) ?? ""}
+      qaPairs={qaPairs}
+      setQaPairs={setQaPairs}
+    />
+  );
 
   return (
     <Container>
       <Flex gap={"5rem"} direction={"column"}>
-        <Question
-          key={currentQuestion.id}
-          question={currentQuestion}
-          answer={qaPairs.get(currentQuestion.id) ?? ""}
-          qaPairs={qaPairs}
-          setQaPairs={setQaPairs}
+        {questionElement}
+        <Pagination
+          total={questions.length}
+          value={activeQuestion}
+          onChange={setActiveQuestion}
         />
-        <Group>
-          <Button onClick={prevQuestion} disabled={questionIndex === 0}>
-            Prev
-          </Button>
-          <Button
-            onClick={nextQuestion}
-            disabled={questionIndex === questions.length - 1}
-          >
-            Next
-          </Button>
-        </Group>
       </Flex>
     </Container>
   );
