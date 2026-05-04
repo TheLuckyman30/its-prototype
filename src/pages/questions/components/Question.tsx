@@ -14,8 +14,8 @@ import { FeedbackText } from "./FeedbackText";
 interface QuestionProps {
   question: QuestionType;
   answer: string;
-  qaPairs: Map<number, string>;
-  setQaPairs: (newPairs: Map<number, string>) => void;
+  qaPairs: Map<string, string>;
+  setQaPairs: (newPairs: Map<string, string>) => void;
 }
 
 export function Question({
@@ -42,15 +42,15 @@ export function Question({
           {question.question}
         </Text>
         <FeedbackText
-          feedback={question.feedback}
+          feedback={question.options[answer]?.feedback ?? ""}
           answer={answer}
-          correct={question.correct}
+          isCorrect={question.options[answer]?.isCorrect ?? false}
         />
         <RadioGroup key={form.key("answer")} {...form.getInputProps("answer")}>
           <Grid>
             {Object.entries(question.options).map(([key, value]) => (
               <GridCol span={{ base: 12, sm: 6 }}>
-                <Radio key={key} value={key} label={value} />
+                <Radio key={key} value={key} label={value.text} />
               </GridCol>
             ))}
           </Grid>

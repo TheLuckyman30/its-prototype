@@ -5,8 +5,8 @@ import questions from "@data/questions.json";
 
 export function Questions() {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const [qaPairs, setQaPairs] = useState<Map<number, string>>(
-    new Map<number, string>(),
+  const [qaPairs, setQaPairs] = useState<Map<string, string>>(
+    new Map<string, string>(),
   );
   const currentQuestion = questions[questionIndex];
 
