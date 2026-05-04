@@ -2,7 +2,7 @@ export interface QuestionType {
   id: number;
   kc: string;
   question: string;
-  options: { A: string; B: string; C: string; D: string };
-  feedback: { A: string; B: string; C: string; D: string };
+  options: { [key: string]: string };
+  feedback: { [key: string]: string };
   correct: string;
 }

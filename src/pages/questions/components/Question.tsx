@@ -9,6 +9,7 @@ import {
   RadioGroup,
   Text,
 } from "@mantine/core";
+import { FeedbackText } from "./FeedbackText";
 
 interface QuestionProps {
   question: QuestionType;
@@ -29,11 +30,9 @@ export function Question({
   });
 
   const handleSubmit = ({ answer }: typeof form.values) => {
-    if (answer === "A" || answer === "B" || answer === "C" || answer === "D") {
-      const newPairs = new Map(qaPairs);
-      newPairs.set(question.id, answer);
-      setQaPairs(newPairs);
-    }
+    const newPairs = new Map(qaPairs);
+    newPairs.set(question.id, answer);
+    setQaPairs(newPairs);
   };
 
   return (
@@ -42,9 +41,14 @@ export function Question({
         <Text size="xl" fw={500}>
           {question.question}
         </Text>
+        <FeedbackText
+          feedback={question.feedback}
+          answer={answer}
+          correct={question.correct}
+        />
         <RadioGroup key={form.key("answer")} {...form.getInputProps("answer")}>
           <Grid>
-            {Object.entries(question.options).map(([key, value], index) => (
+            {Object.entries(question.options).map(([key, value]) => (
               <GridCol span={{ base: 12, sm: 6 }}>
                 <Radio key={key} value={key} label={value} />
               </GridCol>
