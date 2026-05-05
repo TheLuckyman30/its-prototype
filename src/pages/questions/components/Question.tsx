@@ -14,15 +14,21 @@ import {
 interface QuestionProps {
   question: QuestionType;
   answer: string;
+  qaPairs: Map<string, string>;
+  setQaPairs: (newPairs: Map<string, string>) => void;
 }
 
-export function Question({ question, answer }: QuestionProps) {
+export function Question({
+  question,
+  answer,
+  qaPairs,
+  setQaPairs,
+}: QuestionProps) {
   const form = useForm({
     mode: "uncontrolled",
     initialValues: { answer },
   });
-  const { knowledgeComponents, qaPairs, updateKc, setQaPairs } =
-    useStudentStore();
+  const { knowledgeComponents, updateKc } = useStudentStore();
   const feedback = question.options[answer]?.feedback ?? "";
   const isCorrect = question.options[answer]?.isCorrect ?? false;
 

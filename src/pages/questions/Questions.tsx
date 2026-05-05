@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Pagination } from "@mantine/core";
-import { useStudentStore } from "@utils";
 import { EndSection } from "./components/EndSection";
 import questions from "@data/questions.json";
 
 export function Questions() {
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const [showEndScreen, setShowEndScreen] = useState<boolean>(false);
-  const qaPairs = useStudentStore((state) => state.qaPairs);
+  const [qaPairs, setQaPairs] = useState<Map<string, string>>(
+    new Map<string, string>(),
+  );
 
   const currentQuestion = questions[activeQuestion - 1];
   const questionElement = (
@@ -16,13 +17,11 @@ export function Questions() {
       key={currentQuestion.id}
       question={currentQuestion}
       answer={qaPairs.get(currentQuestion.id) ?? ""}
+      qaPairs={qaPairs}
+      setQaPairs={setQaPairs}
     />
   );
-
-  const questionIds = questions.map((question) => question.id);
-  const answeredAllQuestions = questionIds.reduce((acc, id) => {
-    return acc && qaPairs.has(id);
-  }, true);
+  const answeredAllQuestions = qaPairs.size === questions.length;
 
   return (
     <Container>

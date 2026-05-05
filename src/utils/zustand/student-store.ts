@@ -1,19 +1,17 @@
-import type { KnowledgeComponent } from "@utils";
+import type { KnowledgeComponent, Quiz } from "@utils";
 import { create } from "zustand";
 import kcs from "@data/kc.json";
 
-type QaPairs = Map<string, string>;
-
 interface StudentStore {
   knowledgeComponents: KnowledgeComponent[];
-  qaPairs: QaPairs;
+  quizzes: Quiz[];
   updateKc: (updatedKc: KnowledgeComponent) => void;
-  setQaPairs: (newPairs: Map<string, string>) => void;
+  addQuiz: (newQuiz: Quiz) => void;
 }
 
 export const useStudentStore = create<StudentStore>((set) => ({
   knowledgeComponents: kcs,
-  qaPairs: new Map<string, string>(),
+  quizzes: [],
   updateKc: (updatedKC: KnowledgeComponent) => {
     set((state) => ({
       knowledgeComponents: state.knowledgeComponents.map((kc) =>
@@ -21,7 +19,7 @@ export const useStudentStore = create<StudentStore>((set) => ({
       ),
     }));
   },
-  setQaPairs: (newPairs: QaPairs) => {
-    set({ qaPairs: newPairs });
+  addQuiz: (newQuiz: Quiz) => {
+    set((state) => ({ quizzes: { ...state.quizzes, newQuiz } }));
   },
 }));
