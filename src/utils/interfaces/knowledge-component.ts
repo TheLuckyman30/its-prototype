@@ -3,4 +3,5 @@ export interface KnowledgeComponent {
   name: string;
   pKnown: number;
   pWillLearn: number;
+  knowledgeLevel: string;
 }
