@@ -34,7 +34,6 @@ const knowledgeLevels: KnowledgeLevels = {
 export function EndSection({ kcId }: EndSectionProps) {
   const kcs = useStudentStore((state) => state.knowledgeComponents);
   const kc = kcs.find((kc) => kc.id === kcId);
-  console.log(kc);
 
   if (kc) {
     let studentKnowledgeLevel: FeedbackType;
@@ -50,7 +49,7 @@ export function EndSection({ kcId }: EndSectionProps) {
       <Alert
         variant={"light"}
         color={studentKnowledgeLevel.color}
-        title={"Feedback"}
+        title={"End of quiz feedback"}
       >
         {studentKnowledgeLevel.text}
       </Alert>

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
-import { Container, Flex, Pagination } from "@mantine/core";
+import { Button, Container, Flex, Pagination } from "@mantine/core";
 import { useStudentStore } from "@utils";
-import questions from "@data/questions.json";
 import { EndSection } from "./components/EndSection";
+import questions from "@data/questions.json";
 
 export function Questions() {
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
+  const [showEndScreen, setShowEndScreen] = useState<boolean>(false);
   const qaPairs = useStudentStore((state) => state.qaPairs);
 
   const currentQuestion = questions[activeQuestion - 1];
@@ -25,15 +26,28 @@ export function Questions() {
 
   return (
     <Container>
-      <Flex gap={"5rem"} direction={"column"}>
-        {questionElement}
-        <Pagination
-          total={questions.length}
-          value={activeQuestion}
-          onChange={setActiveQuestion}
-        />
-        {answeredAllQuestions && <EndSection kcId={currentQuestion.kcId} />}
-      </Flex>
+      {!showEndScreen ? (
+        <Flex gap={"5rem"} direction={"column"}>
+          {questionElement}
+          <Flex justify={"space-between"}>
+            <Pagination
+              total={questions.length}
+              value={activeQuestion}
+              onChange={setActiveQuestion}
+            />
+            {activeQuestion === questions.length && (
+              <Button
+                onClick={() => setShowEndScreen(true)}
+                disabled={!answeredAllQuestions}
+              >
+                End Screen
+              </Button>
+            )}
+          </Flex>
+        </Flex>
+      ) : (
+        <EndSection kcId={currentQuestion.kcId} />
+      )}
     </Container>
   );
 }
