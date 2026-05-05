@@ -1,7 +1,8 @@
 import { Questions } from "./pages";
 import { useState, type JSX } from "react";
-import { useQuizStore } from "@utils";
+import { selectKc, useQuizStore } from "@utils";
 import questions from "@data/questions.json";
+import categories from "@data/categories.json";
 import "./App.css";
 
 interface Page {
@@ -16,6 +17,7 @@ function App() {
   const setCurrentQuestions = useQuizStore(
     (state) => state.setCurrentQuestions,
   );
+  console.log(selectKc(categories[0]));
 
   setCurrentQuestions(questions);
 
