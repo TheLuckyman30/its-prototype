@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Pagination } from "@mantine/core";
 import { EndSection } from "./components/EndSection";
-import questions from "@data/questions.json";
+import { useQuizStore } from "@utils";
 
 export function Questions() {
+  const questions = useQuizStore((state) => state.currentQuestions);
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const [showEndScreen, setShowEndScreen] = useState<boolean>(false);
   const [qaPairs, setQaPairs] = useState<Map<string, string>>(
