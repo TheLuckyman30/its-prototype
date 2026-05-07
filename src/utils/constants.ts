@@ -1,5 +1,5 @@
-import { Questions } from "@pages";
+import { EndScreen, Questions } from "@pages";
 
-export const PAGES = { questions: Questions };
+export const PAGES = { questions: Questions, endScreen: EndScreen };
 
 export type Pages = typeof PAGES;

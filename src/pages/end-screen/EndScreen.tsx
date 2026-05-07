@@ -1,9 +1,5 @@
 import { Alert } from "@mantine/core";
-import { useStudentStore } from "@utils";
-
-interface EndSectionProps {
-  kcId: string;
-}
+import { useQuizStore } from "@utils";
 
 interface FeedbackType {
   text: string;
@@ -31,28 +27,25 @@ const knowledgeLevels: KnowledgeLevels = {
   },
 };
 
-export function EndSection({ kcId }: EndSectionProps) {
-  const kcs = useStudentStore((state) => state.knowledgeComponents);
-  const kc = kcs.find((kc) => kc.id === kcId);
+export function EndScreen() {
+  const currentKc = useQuizStore((state) => state.currentKc);
 
-  if (kc) {
-    let studentKnowledgeLevel: FeedbackType;
-    if (kc.pKnown < 0.75) {
-      studentKnowledgeLevel = knowledgeLevels.none;
-    } else if (kc.pKnown < 0.9) {
-      studentKnowledgeLevel = knowledgeLevels.adequate;
-    } else {
-      studentKnowledgeLevel = knowledgeLevels.excellent;
-    }
-
-    return (
-      <Alert
-        variant={"light"}
-        color={studentKnowledgeLevel.color}
-        title={"End of quiz feedback"}
-      >
-        {studentKnowledgeLevel.text}
-      </Alert>
-    );
+  let studentKnowledgeLevel: FeedbackType;
+  if (currentKc.pKnown < 0.75) {
+    studentKnowledgeLevel = knowledgeLevels.none;
+  } else if (currentKc.pKnown < 0.9) {
+    studentKnowledgeLevel = knowledgeLevels.adequate;
+  } else {
+    studentKnowledgeLevel = knowledgeLevels.excellent;
   }
+
+  return (
+    <Alert
+      variant={"light"}
+      color={studentKnowledgeLevel.color}
+      title={"End of quiz feedback"}
+    >
+      {studentKnowledgeLevel.text}
+    </Alert>
+  );
 }
