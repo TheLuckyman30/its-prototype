@@ -1,0 +1,11 @@
+[
+  {
+    "id": "cat-1",
+    "title": "Basics of useState",
+    "kcsUnderstanding": {
+      "none": ["kc-1"],
+      "adequate": [],
+      "excellent": []
+    }
+  }
+]

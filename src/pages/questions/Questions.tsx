@@ -1,48 +1,53 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
-import { Button, Container, Flex, Group } from "@mantine/core";
-import questions from "../../data/questions.json";
+import { Button, Container, Flex, Pagination } from "@mantine/core";
+import { EndSection } from "./components/EndSection";
+import { useQuizStore } from "@utils";
 
 export function Questions() {
-  const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const [qaPairs, setQaPairs] = useState<Map<number, string>>(
-    new Map<number, string>(),
+  const questions = useQuizStore((state) => state.currentQuestions);
+  const [activeQuestion, setActiveQuestion] = useState<number>(1);
+  const [showEndScreen, setShowEndScreen] = useState<boolean>(false);
+  const [qaPairs, setQaPairs] = useState<Map<string, string>>(
+    new Map<string, string>(),
   );
-  const currentQuestion = questions[questionIndex];
 
-  const nextQuestion = () => {
-    if (questionIndex !== questions.length - 1) {
-      setQuestionIndex((currVal) => currVal + 1);
-    }
-  };
-  const prevQuestion = () => {
-    if (questionIndex !== 0) {
-      setQuestionIndex((currVal) => currVal - 1);
-    }
-  };
+  const currentQuestion = questions[activeQuestion - 1];
+  const questionElement = (
+    <Question
+      key={currentQuestion.id}
+      question={currentQuestion}
+      answer={qaPairs.get(currentQuestion.id) ?? ""}
+      qaPairs={qaPairs}
+      setQaPairs={setQaPairs}
+    />
+  );
+  const answeredAllQuestions = qaPairs.size === questions.length;
 
   return (
     <Container>
-      <Flex gap={"5rem"} direction={"column"}>
-        <Question
-          key={currentQuestion.id}
-          question={currentQuestion}
-          answer={qaPairs.get(currentQuestion.id) ?? ""}
-          qaPairs={qaPairs}
-          setQaPairs={setQaPairs}
-        />
-        <Group>
-          <Button onClick={prevQuestion} disabled={questionIndex === 0}>
-            Prev
-          </Button>
-          <Button
-            onClick={nextQuestion}
-            disabled={questionIndex === questions.length - 1}
-          >
-            Next
-          </Button>
-        </Group>
-      </Flex>
+      {!showEndScreen ? (
+        <Flex gap={"5rem"} direction={"column"}>
+          {questionElement}
+          <Flex justify={"space-between"}>
+            <Pagination
+              total={questions.length}
+              value={activeQuestion}
+              onChange={setActiveQuestion}
+            />
+            {activeQuestion === questions.length && (
+              <Button
+                onClick={() => setShowEndScreen(true)}
+                disabled={!answeredAllQuestions}
+              >
+                End Screen
+              </Button>
+            )}
+          </Flex>
+        </Flex>
+      ) : (
+        <EndSection kcId={currentQuestion.kcId} />
+      )}
     </Container>
   );
 }

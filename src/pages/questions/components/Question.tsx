@@ -1,6 +1,7 @@
 import { useForm } from "@mantine/form";
-import type { QuestionType } from "../../../utils";
+import { calcProbOfKnown, useStudentStore, type QuestionType } from "@utils";
 import {
+  Alert,
   Button,
   Flex,
   Grid,
@@ -9,13 +10,12 @@ import {
   RadioGroup,
   Text,
 } from "@mantine/core";
-import { FeedbackText } from "./FeedbackText";
 
 interface QuestionProps {
   question: QuestionType;
   answer: string;
-  qaPairs: Map<number, string>;
-  setQaPairs: (newPairs: Map<number, string>) => void;
+  qaPairs: Map<string, string>;
+  setQaPairs: (newPairs: Map<string, string>) => void;
 }
 
 export function Question({
@@ -28,8 +28,26 @@ export function Question({
     mode: "uncontrolled",
     initialValues: { answer },
   });
+  const { knowledgeComponents, updateKc } = useStudentStore();
+  const feedback = question.options[answer]?.feedback ?? "";
+  const isCorrect = question.options[answer]?.isCorrect ?? false;
 
   const handleSubmit = ({ answer }: typeof form.values) => {
+    const kc = knowledgeComponents.find((kc) => kc.id === question.kcId);
+    if (kc) {
+      const { pKnown, pWillLearn } = kc;
+      const { pGuess, pSlip } = question;
+      const isCorrect = question.options[answer].isCorrect;
+      const newProbOfKnown = calcProbOfKnown(
+        pKnown,
+        pWillLearn,
+        pSlip,
+        pGuess,
+        isCorrect,
+      );
+      const updatedKc = { ...kc, pKnown: newProbOfKnown };
+      updateKc(updatedKc);
+    }
     const newPairs = new Map(qaPairs);
     newPairs.set(question.id, answer);
     setQaPairs(newPairs);
@@ -41,16 +59,19 @@ export function Question({
         <Text size="xl" fw={500}>
           {question.question}
         </Text>
-        <FeedbackText
-          feedback={question.feedback}
-          answer={answer}
-          correct={question.correct}
-        />
+        <Alert
+          hidden={!answer}
+          variant="light"
+          color={isCorrect ? "green" : "yellow"}
+          title="Feedback"
+        >
+          {feedback}
+        </Alert>
         <RadioGroup key={form.key("answer")} {...form.getInputProps("answer")}>
           <Grid>
             {Object.entries(question.options).map(([key, value]) => (
-              <GridCol span={{ base: 12, sm: 6 }}>
-                <Radio key={key} value={key} label={value} />
+              <GridCol key={key} span={{ base: 12, sm: 6 }}>
+                <Radio value={key} label={value.text} />
               </GridCol>
             ))}
           </Grid>

@@ -1,38 +1,60 @@
 [
   {
-    "id": 1,
-    "kc": "Identify why the useState hook is necessary",
+    "id": "q-1",
+    "kcId": "kc-1",
     "question": "Why is the useState hook necessary in a React component?",
     "options": {
-      "A": "It allows React to track values and re-render the component when those values change",
-      "B": "It lets JavaScript variables be used inside JSX",
-      "C": "It automatically updates all HTML elements in the component",
-      "D": "It is required whenever a component uses a button"
+      "A": {
+        "text": "It allows React to track values and re-render the component when those values change",
+        "feedback": "Correct! useState allows React to track state values and re-render the component whenever those values change.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "It lets JavaScript variables be used inside JSX",
+        "feedback": "useState is not required just to display values in JSX. Regular variables can also be displayed, but useState is needed when the value changes and the UI should update.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "It automatically updates all HTML elements in the component",
+        "feedback": "useState does not directly update HTML elements. Instead, it tells React that state has changed so React can re-render the component.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "It is required whenever a component uses a button",
+        "feedback": "Buttons do not require useState. useState is only needed when a component must track changing values and update the UI.",
+        "isCorrect": false
+      }
     },
-    "feedback": {
-      "A": "Correct! useState allows React to track state values and re-render the component whenever those values change.",
-      "B": "useState is not required just to display values in JSX. Regular variables can also be displayed, but useState is needed when the value changes and the UI should update.",
-      "C": "useState does not directly update HTML elements. Instead, it tells React that state has changed so React can re-render the component.",
-      "D": "Buttons do not require useState. useState is only needed when a component must track changing values and update the UI."
-    },
-    "correct": "A"
+    "pSlip": 0.1,
+    "pGuess": 0.3
   },
   {
-    "id": 2,
-    "kc": "Identify why the useState hook is necessary",
+    "id": "q-2",
+    "kcId": "kc-1",
     "question": "What problem does useState solve in a React component?",
     "options": {
-      "A": "It allows a component to remember changing values between renders",
-      "B": "It allows functions to return JSX",
-      "C": "It makes variables update faster",
-      "D": "It allows components to call other components"
+      "A": {
+        "text": "It allows a component to remember changing values between renders",
+        "feedback": "Correct! useState allows a component to preserve values between renders and update the UI when those values change.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "It allows functions to return JSX",
+        "feedback": "Components can return JSX without useState. The purpose of useState is to manage changing values that should persist between renders.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "It makes variables update faster",
+        "feedback": "useState is not used to make variables update faster. It is used so React can track state changes and re-render the component when needed.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "It allows components to call other components",
+        "feedback": "Components can render other components without useState. The purpose of useState is to store values that can change over time.",
+        "isCorrect": false
+      }
     },
-    "feedback": {
-      "A": "Correct! useState allows a component to preserve values between renders and update the UI when those values change.",
-      "B": "Components can return JSX without useState. The purpose of useState is to manage changing values that should persist between renders.",
-      "C": "useState is not used to make variables update faster. It is used so React can track state changes and re-render the component when needed.",
-      "D": "Components can render other components without useState. The purpose of useState is to store values that can change over time."
-    },
-    "correct": "A"
+    "pSlip": 0.2,
+    "pGuess": 0.4
   }
 ]
