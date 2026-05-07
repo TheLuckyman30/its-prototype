@@ -1,29 +1,19 @@
-import { Questions } from "./pages";
-import { useState, type JSX } from "react";
-import { selectKc, useQuizStore } from "@utils";
+import { useQuizStore } from "@utils";
+import { useAppStore } from "./utils/zustand/app-store";
 import questions from "@data/questions.json";
-import categories from "@data/categories.json";
 import "./App.css";
 
-interface Page {
-  name: string;
-  element: JSX.Element;
-}
-
-const pages: Page[] = [{ name: "Question", element: <Questions /> }];
-
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>(pages[0]);
+  const Page = useAppStore((state) => state.currentPage);
   const setCurrentQuestions = useQuizStore(
     (state) => state.setCurrentQuestions,
   );
-  console.log(selectKc(categories[0]));
 
   setCurrentQuestions(questions);
 
   return (
     <main className="flex justify-center items-center h-screen w-full">
-      {currentPage.element}
+      <Page />
     </main>
   );
 }

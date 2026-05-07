@@ -20,7 +20,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": { "@utils": ["./src/utils/index.ts"], "@data/*": ["./src/data/*"] }
+    "paths": {
+      "@utils": ["./src/utils/index.ts"],
+      "@data/*": ["./src/data/*"],
+      "@pages": ["./src/pages/index.ts"]
+    }
   },
   "include": ["src"]
 }
