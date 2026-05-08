@@ -1,4 +1,5 @@
-import { getRandomElement, type QuestionType } from "@utils";
+import type { QuestionType } from "../interfaces";
+import { getRandomElement } from "./get-random-element";
 import allQuestions from "@data/questions.json";
 
 export function buildQuestions(currentKcId: string) {

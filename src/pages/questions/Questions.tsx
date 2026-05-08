@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Pagination } from "@mantine/core";
-import { useQuizStore } from "@utils";
+import { useQuizStore } from "@utils/zustand";
 
 export function Questions() {
   const questions = useQuizStore((state) => state.currentQuestions);

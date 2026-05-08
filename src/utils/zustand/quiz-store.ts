@@ -1,4 +1,4 @@
-import type { KnowledgeComponent, QuestionType } from "@utils";
+import type { KnowledgeComponent, QuestionType } from "../interfaces";
 import { create } from "zustand";
 import kcs from "@data/kc.json";
 

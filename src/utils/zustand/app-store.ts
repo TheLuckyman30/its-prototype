@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { PAGES } from "@utils";
+import { PAGES } from "../constants";
 import type { JSX } from "react";
 
 interface AppStore {

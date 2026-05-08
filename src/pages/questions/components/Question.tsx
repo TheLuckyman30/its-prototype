@@ -1,5 +1,4 @@
 import { useForm } from "@mantine/form";
-import { calcProbOfKnown, useStudentStore, type QuestionType } from "@utils";
 import {
   Alert,
   Button,
@@ -10,6 +9,9 @@ import {
   RadioGroup,
   Text,
 } from "@mantine/core";
+import { calcProbOfKnown } from "@utils/helpers";
+import { useStudentStore } from "@utils/zustand";
+import type { QuestionType } from "@utils/interfaces";
 
 interface QuestionProps {
   question: QuestionType;

@@ -1,7 +1,11 @@
-import { getRandomElement, type Category } from "@utils";
-import allKcs from "@data/kc.json";
+import type { KnowledgeComponent, Category } from "../interfaces";
+import { getRandomElement } from "./get-random-element";
 
-export function selectKc(currentCategory: Category, knowledgeLevel?: string) {
+export function selectKc(
+  allKcs: KnowledgeComponent[],
+  currentCategory: Category,
+  knowledgeLevel?: string,
+) {
   let selectedKcId: string;
   switch (knowledgeLevel) {
     case "adequate":

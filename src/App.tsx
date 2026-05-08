@@ -1,5 +1,4 @@
-import { useQuizStore } from "@utils";
-import { useAppStore } from "./utils/zustand/app-store";
+import { useQuizStore, useAppStore } from "@utils/zustand";
 import questions from "@data/questions.json";
 import "./App.css";
 

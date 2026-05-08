@@ -21,7 +21,7 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@utils": ["./src/utils/index.ts"],
+      "@utils/*": ["./src/utils/*"],
       "@data/*": ["./src/data/*"],
       "@pages": ["./src/pages/index.ts"]
     }
