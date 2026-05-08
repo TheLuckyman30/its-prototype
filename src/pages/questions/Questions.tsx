@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Pagination } from "@mantine/core";
-import { useQuizStore } from "@utils/zustand";
+import { useAppStore, useQuizStore } from "@utils/zustand";
+import { PAGES } from "@utils/constants";
 
 export function Questions() {
   const questions = useQuizStore((state) => state.currentQuestions);
@@ -9,6 +10,7 @@ export function Questions() {
   const [qaPairs, setQaPairs] = useState<Map<string, string>>(
     new Map<string, string>(),
   );
+  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
 
   const currentQuestion = questions[activeQuestion - 1];
   const questionElement = (
@@ -33,7 +35,12 @@ export function Questions() {
             onChange={setActiveQuestion}
           />
           {activeQuestion === questions.length && (
-            <Button disabled={!answeredAllQuestions}>End Screen</Button>
+            <Button
+              disabled={!answeredAllQuestions}
+              onClick={() => setCurrentPage(PAGES.endScreen)}
+            >
+              End Screen
+            </Button>
           )}
         </Flex>
       </Flex>

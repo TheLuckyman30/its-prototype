@@ -10,7 +10,7 @@ import {
   Text,
 } from "@mantine/core";
 import { calcProbOfKnown } from "@utils/helpers";
-import { useStudentStore } from "@utils/zustand";
+import { useQuizStore, useStudentStore } from "@utils/zustand";
 import type { QuestionType } from "@utils/interfaces";
 
 interface QuestionProps {
@@ -31,6 +31,7 @@ export function Question({
     initialValues: { answer },
   });
   const { knowledgeComponents, updateKc } = useStudentStore();
+  const setCurrentKc = useQuizStore((state) => state.setCurrentKc);
   const feedback = question.options[answer]?.feedback ?? "";
   const isCorrect = question.options[answer]?.isCorrect ?? false;
 
@@ -48,6 +49,7 @@ export function Question({
         isCorrect,
       );
       const updatedKc = { ...kc, pKnown: newProbOfKnown };
+      setCurrentKc(updatedKc);
       updateKc(updatedKc);
     }
     const newPairs = new Map(qaPairs);
