@@ -1,1 +1,0 @@
-export { useDecide } from "./useDecide";

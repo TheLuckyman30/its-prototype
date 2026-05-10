@@ -1,33 +1,31 @@
-import { Alert, Button, Container, Flex } from "@mantine/core";
-import { PAGES } from "@utils/constants";
-import { useDecide } from "@utils/custom-hooks";
-import { buildQuestions } from "@utils/helpers/build-questions";
-import { useAppStore, useQuizStore } from "@utils/zustand";
+import { Alert, Container, Flex } from "@mantine/core";
+import { getQuizFeedback } from "@utils/helpers";
+import { useQuizStore, useStudentStore } from "@utils/zustand";
 
 export function EndScreen() {
-  const { text, color } = useDecide();
   const currentKc = useQuizStore((state) => state.currentKc);
-  console.log(currentKc);
-  const setCurrentQuestions = useQuizStore(
-    (state) => state.setCurrentQuestions,
+  const currentCategory = useStudentStore((state) => state.currentCategory);
+  const updateCategory = useStudentStore((state) => state.updateCategory);
+
+  const { feedback, updatedCategory } = getQuizFeedback(
+    currentKc,
+    currentCategory,
   );
-  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
-  const newQuestions = buildQuestions(currentKc.id);
+
+  if (updatedCategory) {
+    updateCategory(updatedCategory);
+  }
 
   return (
     <Container>
       <Flex gap={"5rem"} direction={"column"}>
-        <Alert variant={"light"} color={color} title={"End of quiz feedback"}>
-          {text}
-        </Alert>
-        <Button
-          onClick={() => {
-            setCurrentQuestions(newQuestions);
-            setCurrentPage(PAGES.questions);
-          }}
+        <Alert
+          variant={"light"}
+          color={feedback.color}
+          title={"End of quiz feedback"}
         >
-          Practice More
-        </Button>
+          {feedback.text}
+        </Alert>
       </Flex>
     </Container>
   );

@@ -1,10 +1,10 @@
-import { useQuizStore, useStudentStore } from "../zustand";
+import type { Category, KnowledgeComponent } from "../interfaces";
 
-export function useDecide() {
-  const currentKc = useQuizStore((state) => state.currentKc);
-  const currentCategory = useStudentStore((state) => state.currentCategory);
-  const updateCategory = useStudentStore((state) => state.updateCategory);
-
+export function getQuizFeedback(
+  currentKc: KnowledgeComponent,
+  currentCategory: Category,
+) {
+  let updatedCategory: Category | null;
   let text: string;
   let color: string;
 
@@ -12,7 +12,7 @@ export function useDecide() {
     text =
       "Excellent work! You can continue practicing if you wish, but you may move onto the next lesson.";
     color = "green";
-    const updatedCategory = {
+    updatedCategory = {
       ...currentCategory,
       kcsUnderstanding: {
         ...currentCategory.kcsUnderstanding,
@@ -25,12 +25,11 @@ export function useDecide() {
         ],
       },
     };
-    updateCategory(updatedCategory);
   } else if (currentKc.pKnown > 0.75) {
     text =
       "You have done a good job on this lesson. It looks like you did struggle with some parts of the lesson, so we recommend getting more practice in. However, you may move onto the next lesson.";
     color = "yellow";
-    const updatedCategory = {
+    updatedCategory = {
       ...currentCategory,
       kcsUnderstanding: {
         ...currentCategory.kcsUnderstanding,
@@ -40,11 +39,11 @@ export function useDecide() {
         adequate: [...currentCategory.kcsUnderstanding.adequate, currentKc.id],
       },
     };
-    updateCategory(updatedCategory);
   } else {
     text =
       "It seems like you struggled with the concepts of this lesson. Please complete more practice problems before continuing.";
     color = "red";
+    updatedCategory = null;
   }
 
   if (!currentCategory.kcsUnderstanding.none.length) {
@@ -60,5 +59,5 @@ export function useDecide() {
     }
   }
 
-  return { text, color };
+  return { feedback: { text, color }, updatedCategory };
 }
