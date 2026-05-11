@@ -1,11 +1,7 @@
-type KcUnderstanding = {
-  none: string[];
-  adequate: string[];
-  excellent: string[];
-};
-
 export interface Category {
   id: string;
   title: string;
-  kcsUnderstanding: KcUnderstanding;
+  none: Set<string>;
+  adequate: Set<string>;
+  excellent: Set<string>;
 }

@@ -6,15 +6,14 @@ import { PAGES } from "@utils/constants";
 
 export function Questions() {
   const quiz = useQuizStore((state) => state.quiz);
-
-  if (!quiz) return null;
-
-  const questions = quiz.questions;
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const [qaPairs, setQaPairs] = useState<Map<string, string>>(
     new Map<string, string>(),
   );
   const setCurrentPage = useAppStore((state) => state.setCurrentPage);
+
+  if (!quiz) return null;
+  const questions = quiz.questions;
 
   const currentQuestion = questions[activeQuestion - 1];
   const questionElement = (

@@ -16,9 +16,22 @@ interface StudentStore {
   addQuiz: (newQuiz: Quiz) => void;
 }
 
+function formatedCategories() {
+  const newCategories = categories.map((category) => {
+    return {
+      ...category,
+      none: new Set<string>(category.none),
+      adequate: new Set<string>(category.adequate),
+      excellent: new Set<string>(category.excellent),
+    };
+  });
+
+  return newCategories;
+}
+
 export const useStudentStore = create<StudentStore>((set) => ({
   kcs,
-  categories,
+  categories: formatedCategories(),
   currentKcId: kcs[0].id,
   currentCategoryId: categories[0].id,
   quizzes: [],
