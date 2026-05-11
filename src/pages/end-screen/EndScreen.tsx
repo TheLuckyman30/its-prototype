@@ -1,4 +1,4 @@
-import { Alert, Container, Flex } from "@mantine/core";
+import { Alert, Button, Flex } from "@mantine/core";
 import { PAGES } from "@utils/constants";
 import { findById, getQuizFeedback } from "@utils/helpers";
 import { useAppStore, useQuizStore, useStudentStore } from "@utils/zustand";
@@ -14,21 +14,27 @@ export function EndScreen() {
 
   const { feedback, newQuiz } = getQuizFeedback(kcs, kc, currentCategory);
 
+  const handleSubmit = () => {
+    if (newQuiz) {
+      setCurrentPage(PAGES.questions);
+    } else {
+      setCurrentPage(PAGES.questions); // Change this to home page when implemented
+    }
+    setQuiz(newQuiz);
+  };
+
   return (
-    <Container>
-      <Flex gap={"5rem"} direction={"column"}>
-        <Alert
-          onClick={() => {
-            setQuiz(newQuiz);
-            setCurrentPage(PAGES.questions);
-          }}
-          variant={"light"}
-          color={feedback.color}
-          title={"End of quiz feedback"}
-        >
-          {feedback.text}
-        </Alert>
+    <Flex gap={"5rem"} direction={"column"}>
+      <Alert
+        variant={"light"}
+        color={feedback.color}
+        title={"End of quiz feedback"}
+      >
+        {feedback.text}
+      </Alert>
+      <Flex justify={"start"}>
+        <Button onClick={handleSubmit}>Next</Button>
       </Flex>
-    </Container>
+    </Flex>
   );
 }

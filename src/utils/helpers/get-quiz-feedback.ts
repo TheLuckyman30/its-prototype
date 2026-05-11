@@ -1,6 +1,6 @@
 import { isNoneLevel, isAdequateLevel, isExcellentLevel } from "../constants";
-import type { Category, KnowledgeComponent } from "../interfaces";
 import { buildNewQuiz } from "./build-new-quiz";
+import type { Category, KnowledgeComponent } from "../interfaces";
 
 const options = [
   {
@@ -15,12 +15,14 @@ const options = [
     text: "You have done a good job on this lesson. It looks like you did struggle with some parts of the lesson, so we recommend getting more practice in. However, you may move onto the next lesson.",
     color: "yellow",
     condition: (pKnown: number) => isAdequateLevel(pKnown),
+    flags: {},
   },
   {
     type: "excellent-understanding",
     text: "Excellent work! You can continue practicing if you wish, but you may move onto the next lesson.",
     color: "green",
     condition: (pKnown: number) => isExcellentLevel(pKnown),
+    flags: {},
   },
 ];
 
@@ -32,6 +34,7 @@ const options2 = [
     condition: (currentCategory: Category) => {
       return currentCategory.adequate.size >= currentCategory.excellent.size;
     },
+    flags: { useAdequate: true },
   },
   {
     type: "enough-excellent",
@@ -40,8 +43,11 @@ const options2 = [
     condition: (currentCategory: Category) => {
       return currentCategory.adequate.size < currentCategory.excellent.size;
     },
+    flags: {},
   },
 ];
+
+type Options = (typeof options)[number] | (typeof options2)[number];
 
 export function getQuizFeedback(
   allKcs: KnowledgeComponent[],
@@ -51,9 +57,7 @@ export function getQuizFeedback(
   let text: string = "";
   let color: string = "";
 
-  let option:
-    | Partial<{ text: string; color: string; flags: { useCurrentKc: boolean } }>
-    | undefined;
+  let option: Options | undefined;
   if (currentCategory.none.size) {
     option = options.find((op) => op.condition(currentKc.pKnown));
   } else {

@@ -1,4 +1,9 @@
-import type { Category, KnowledgeComponent, Quiz } from "../interfaces";
+import type {
+  Category,
+  KnowledgeComponent,
+  QuestionType,
+  Quiz,
+} from "../interfaces";
 import { buildQuestions } from "./build-questions";
 import { selectKc } from "./select-kc";
 
@@ -6,24 +11,26 @@ export function buildNewQuiz(
   category: Category,
   kc: KnowledgeComponent,
   allKcs: KnowledgeComponent[],
-  { useCurrentKc = false } = {},
+  { useCurrentKc = false, useAdequate = false } = {},
 ) {
-  let quiz: Quiz;
+  let quiz: Quiz | null = null;
+  let questions: QuestionType[] = [];
+  let selectedKc: KnowledgeComponent | undefined = undefined;
   if (useCurrentKc) {
-    const questions = buildQuestions(kc.id);
-    quiz = {
-      id: 0,
-      kcId: kc.id,
-      categoryId: category.id,
-      questions,
-      qaPairs: new Map<string, string>(),
-    };
+    selectedKc = kc;
+    questions = buildQuestions(kc.id);
+  } else if (useAdequate) {
+    selectedKc = selectKc(allKcs, category, "adequate");
+    questions = buildQuestions(selectedKc?.id ?? "");
   } else {
-    const selectedKc = selectKc(allKcs, category);
-    const questions = buildQuestions(selectedKc?.id ?? "");
+    selectedKc = selectKc(allKcs, category);
+    questions = buildQuestions(selectedKc?.id ?? "");
+  }
+
+  if (selectedKc) {
     quiz = {
       id: 0,
-      kcId: kc.id,
+      kcId: selectedKc.id,
       categoryId: category.id,
       questions,
       qaPairs: new Map<string, string>(),
