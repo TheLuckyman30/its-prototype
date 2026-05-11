@@ -10,16 +10,18 @@ export function selectKc(
   switch (knowledgeLevel) {
     case "adequate":
       selectedKcId = getRandomElement(
-        currentCategory.kcsUnderstanding.adequate,
+        Array.from(currentCategory.adequate.values()),
       );
       break;
     case "excellent":
       selectedKcId = getRandomElement(
-        currentCategory.kcsUnderstanding.excellent,
+        Array.from(currentCategory.excellent.values()),
       );
       break;
     default:
-      selectedKcId = getRandomElement(currentCategory.kcsUnderstanding.none);
+      selectedKcId = getRandomElement(
+        Array.from(currentCategory.none.values()),
+      );
   }
 
   const selectedKc = allKcs.find((k) => k.id === selectedKcId);
