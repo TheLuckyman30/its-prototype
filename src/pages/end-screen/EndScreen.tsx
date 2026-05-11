@@ -1,16 +1,16 @@
 import { Alert, Container, Flex } from "@mantine/core";
-import { getQuizFeedback } from "@utils/helpers";
-import { useQuizStore, useStudentStore } from "@utils/zustand";
+import { findById, getQuizFeedback } from "@utils/helpers";
+import { useStudentStore } from "@utils/zustand";
 
 export function EndScreen() {
-  const currentKc = useQuizStore((state) => state.currentKc);
-  const currentCategory = useStudentStore((state) => state.currentCategory);
-  const updateCategory = useStudentStore((state) => state.updateCategory);
+  const { kcs, categories, currentKcId, currentCategoryId, updateCategory } =
+    useStudentStore();
+  const kc = findById(currentKcId, kcs);
+  const currentCategory = findById(currentCategoryId, categories);
 
-  const { feedback, updatedCategory } = getQuizFeedback(
-    currentKc,
-    currentCategory,
-  );
+  if (!kc || !currentCategory) return null;
+
+  const { feedback, updatedCategory } = getQuizFeedback(kc, currentCategory);
 
   if (updatedCategory) {
     updateCategory(updatedCategory);

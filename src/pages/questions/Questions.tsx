@@ -5,7 +5,11 @@ import { useAppStore, useQuizStore } from "@utils/zustand";
 import { PAGES } from "@utils/constants";
 
 export function Questions() {
-  const questions = useQuizStore((state) => state.currentQuestions);
+  const quiz = useQuizStore((state) => state.quiz);
+
+  if (!quiz) return null;
+
+  const questions = quiz.questions;
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const [qaPairs, setQaPairs] = useState<Map<string, string>>(
     new Map<string, string>(),

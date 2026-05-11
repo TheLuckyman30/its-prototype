@@ -9,8 +9,8 @@ import {
   RadioGroup,
   Text,
 } from "@mantine/core";
-import { calcProbOfKnown } from "@utils/helpers";
-import { useQuizStore, useStudentStore } from "@utils/zustand";
+import { calcProbOfKnown, findById } from "@utils/helpers";
+import { useStudentStore } from "@utils/zustand";
 import type { QuestionType } from "@utils/interfaces";
 
 interface QuestionProps {
@@ -30,13 +30,12 @@ export function Question({
     mode: "uncontrolled",
     initialValues: { answer },
   });
-  const { knowledgeComponents, updateKc } = useStudentStore();
-  const setCurrentKc = useQuizStore((state) => state.setCurrentKc);
+  const { kcs, currentKcId, updateKc } = useStudentStore();
   const feedback = question.options[answer]?.feedback ?? "";
   const isCorrect = question.options[answer]?.isCorrect ?? false;
 
   const handleSubmit = ({ answer }: typeof form.values) => {
-    const kc = knowledgeComponents.find((kc) => kc.id === question.kcId);
+    const kc = findById(currentKcId, kcs);
     if (kc) {
       const { pKnown, pWillLearn } = kc;
       const { pGuess, pSlip } = question;
@@ -49,7 +48,6 @@ export function Question({
         isCorrect,
       );
       const updatedKc = { ...kc, pKnown: newProbOfKnown };
-      setCurrentKc(updatedKc);
       updateKc(updatedKc);
     }
     const newPairs = new Map(qaPairs);

@@ -7,5 +7,23 @@
       "adequate": [],
       "excellent": []
     }
+  },
+  {
+    "id": "cat-2",
+    "title": "Basics of useState",
+    "kcsUnderstanding": {
+      "none": [],
+      "adequate": [],
+      "excellent": []
+    }
+  },
+  {
+    "id": "cat-3",
+    "title": "Call the useState Hook",
+    "kcsUnderstanding": {
+      "none": [],
+      "adequate": [],
+      "excellent": []
+    }
   }
 ]

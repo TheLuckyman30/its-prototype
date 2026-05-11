@@ -3,13 +3,13 @@ import { PAGES } from "../constants";
 import type { JSX } from "react";
 
 interface AppStore {
-  currentPage: () => JSX.Element;
-  setCurrentPage: (newPage: () => JSX.Element) => void;
+  currentPage: () => JSX.Element | null;
+  setCurrentPage: (newPage: () => JSX.Element | null) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
   currentPage: PAGES.questions,
-  setCurrentPage: (newPage: () => JSX.Element) => {
+  setCurrentPage: (newPage: () => JSX.Element | null) => {
     set({ currentPage: newPage });
   },
 }));
