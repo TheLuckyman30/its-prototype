@@ -2,10 +2,10 @@ import type { QuestionType } from "../interfaces";
 import { getRandomElement } from "./get-random-element";
 import allQuestions from "@data/questions.json";
 
-export function buildQuestions(currentKcId: string) {
+export function buildQuestions(kcId: string) {
   const numQuestions = 4;
   let relevantQuestions: QuestionType[] = allQuestions.filter(
-    (question) => question.kcId === currentKcId,
+    (question) => question.kcId === kcId,
   );
   let quizQuestions = relevantQuestions;
 

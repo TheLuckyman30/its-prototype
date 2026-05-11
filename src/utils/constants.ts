@@ -8,3 +8,10 @@ export const CATEGORY_MAP: Record<string, string> = {
 };
 
 export type Pages = typeof PAGES;
+
+export const isExcellentLevel = (pKnown: number) => pKnown >= 0.9;
+
+export const isAdequateLevel = (pKnown: number) =>
+  pKnown >= 0.75 && pKnown < 0.9;
+
+export const isNoneLevel = (pKnown: number) => pKnown < 0.75;

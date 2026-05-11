@@ -1,18 +1,24 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Pagination } from "@mantine/core";
-import { useAppStore, useQuizStore } from "@utils/zustand";
+import { useAppStore, useQuizStore, useStudentStore } from "@utils/zustand";
 import { PAGES } from "@utils/constants";
+import { findById, updateKnowledgeLevels } from "@utils/helpers";
 
 export function Questions() {
   const quiz = useQuizStore((state) => state.quiz);
+  const { kcs, categories, currentKcId, currentCategoryId, updateCategory } =
+    useStudentStore();
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
   const [qaPairs, setQaPairs] = useState<Map<string, string>>(
     new Map<string, string>(),
   );
   const setCurrentPage = useAppStore((state) => state.setCurrentPage);
 
-  if (!quiz) return null;
+  const kc = findById(currentKcId, kcs);
+  const currentCategory = findById(currentCategoryId, categories);
+
+  if (!quiz || !kc || !currentCategory) return null;
   const questions = quiz.questions;
 
   const currentQuestion = questions[activeQuestion - 1];
@@ -27,6 +33,12 @@ export function Questions() {
   );
   const answeredAllQuestions = qaPairs.size === questions.length;
 
+  const handleSubmit = () => {
+    const updatedCategory = updateKnowledgeLevels(currentCategory, kc);
+    updateCategory(updatedCategory);
+    setCurrentPage(PAGES.endScreen);
+  };
+
   return (
     <Container>
       <Flex gap={"5rem"} direction={"column"}>
@@ -38,10 +50,7 @@ export function Questions() {
             onChange={setActiveQuestion}
           />
           {activeQuestion === questions.length && (
-            <Button
-              disabled={!answeredAllQuestions}
-              onClick={() => setCurrentPage(PAGES.endScreen)}
-            >
+            <Button disabled={!answeredAllQuestions} onClick={handleSubmit}>
               End Screen
             </Button>
           )}

@@ -30,7 +30,10 @@ export function Question({
     mode: "uncontrolled",
     initialValues: { answer },
   });
-  const { kcs, currentKcId, updateKc } = useStudentStore();
+  const kcs = useStudentStore((state) => state.kcs);
+  const currentKcId = useStudentStore((state) => state.currentKcId);
+  const updateKc = useStudentStore((state) => state.updateKc);
+
   const feedback = question.options[answer]?.feedback ?? "";
   const isCorrect = question.options[answer]?.isCorrect ?? false;
 

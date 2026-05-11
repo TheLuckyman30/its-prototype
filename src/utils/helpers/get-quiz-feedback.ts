@@ -1,32 +1,26 @@
+import { isNoneLevel, isAdequateLevel, isExcellentLevel } from "../constants";
 import type { Category, KnowledgeComponent } from "../interfaces";
-
-const isExcellentLevel = (pKnown: number) => pKnown >= 0.9;
-const isAdequateLevel = (pKnown: number) => pKnown >= 0.75 && pKnown < 0.9;
+import { buildNewQuiz } from "./build-new-quiz";
 
 const options = [
   {
     type: "no-understanding",
     text: "It seems like you struggled with the concepts of this lesson. Please complete more practice problems before continuing.",
     color: "red",
-    condition: (pKnown: number) => {
-      return pKnown < 0.75;
-    },
+    condition: (pKnown: number) => isNoneLevel(pKnown),
+    flags: { useCurrentKc: true },
   },
   {
     type: "adequate-understanding",
     text: "You have done a good job on this lesson. It looks like you did struggle with some parts of the lesson, so we recommend getting more practice in. However, you may move onto the next lesson.",
     color: "yellow",
-    condition: (pKnown: number) => {
-      return pKnown >= 0.75 && pKnown < 0.9;
-    },
+    condition: (pKnown: number) => isAdequateLevel(pKnown),
   },
   {
     type: "excellent-understanding",
     text: "Excellent work! You can continue practicing if you wish, but you may move onto the next lesson.",
     color: "green",
-    condition: (pKnown: number) => {
-      return pKnown >= 0.9;
-    },
+    condition: (pKnown: number) => isExcellentLevel(pKnown),
   },
 ];
 
@@ -50,45 +44,20 @@ const options2 = [
 ];
 
 export function getQuizFeedback(
+  allKcs: KnowledgeComponent[],
   currentKc: KnowledgeComponent,
   currentCategory: Category,
 ) {
-  let updatedCategory: Category | null = null;
   let text: string = "";
   let color: string = "";
 
-  const noneSet = new Set(currentCategory.none);
-  const adequateSet = new Set(currentCategory.adequate);
-  const excellentSet = new Set(currentCategory.excellent);
-  if (isExcellentLevel(currentKc.pKnown)) {
-    noneSet.delete(currentKc.id);
-    adequateSet.delete(currentKc.id);
-    excellentSet.add(currentKc.id);
-    updatedCategory = {
-      ...currentCategory,
-      none: noneSet,
-      adequate: adequateSet,
-      excellent: excellentSet,
-    };
-  } else if (isAdequateLevel(currentKc.pKnown)) {
-    noneSet.delete(currentKc.id);
-    adequateSet.add(currentKc.id);
-    excellentSet.delete(currentKc.id);
-    updatedCategory = {
-      ...currentCategory,
-      none: noneSet,
-      adequate: adequateSet,
-      excellent: excellentSet,
-    };
-  }
-
-  let option: Partial<{ text: string; color: string }> | undefined;
+  let option:
+    | Partial<{ text: string; color: string; flags: { useCurrentKc: boolean } }>
+    | undefined;
   if (currentCategory.none.size) {
     option = options.find((op) => op.condition(currentKc.pKnown));
   } else {
-    option = options2.find((op) =>
-      op.condition(updatedCategory ?? currentCategory),
-    );
+    option = options2.find((op) => op.condition(currentCategory));
   }
 
   if (option) {
@@ -96,5 +65,12 @@ export function getQuizFeedback(
     color = option.color ?? "";
   }
 
-  return { feedback: { text, color }, updatedCategory };
+  const newQuiz = buildNewQuiz(
+    currentCategory,
+    currentKc,
+    allKcs,
+    option?.flags,
+  );
+
+  return { feedback: { text, color }, newQuiz };
 }
