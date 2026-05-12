@@ -11,6 +11,7 @@ export function EndScreen() {
     currentCategoryId,
     setCurrentCategory,
     setCurrentKc,
+    updateCategory,
   } = useStudentStore();
   const setQuiz = useQuizStore((state) => state.setQuiz);
   const setCurrentPage = useAppStore((state) => state.setCurrentPage);
@@ -31,6 +32,9 @@ export function EndScreen() {
       setCurrentPage(PAGES.questions);
     } else {
       setCurrentPage(PAGES.questions); // Change this to home page when implemented
+      if (selectedCategory) {
+        updateCategory({ ...selectedCategory, unlocked: true });
+      }
     }
     setQuiz(quiz);
     setCurrentKc(selectedKc?.id ?? "");

@@ -8,7 +8,7 @@ interface AppStore {
 }
 
 export const useAppStore = create<AppStore>((set) => ({
-  currentPage: PAGES.questions,
+  currentPage: PAGES.home,
   setCurrentPage: (newPage: () => JSX.Element | null) => {
     set({ currentPage: newPage });
   },

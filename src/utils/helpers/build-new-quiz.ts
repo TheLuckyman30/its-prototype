@@ -1,4 +1,4 @@
-import { CATEGORY_MAP } from "@utils/constants";
+import { CATEGORY_MAP } from "../constants";
 import type {
   Category,
   KnowledgeComponent,
