@@ -2,17 +2,452 @@
   {
     "id": "q-1",
     "kcId": "kc-1",
-    "question": "Why is the useState hook necessary in a React component?",
+    "question": "Which of the following is written in PascalCase and could be used as a React component name?",
     "options": {
       "A": {
-        "text": "It allows React to track values and re-render the component when those values change",
-        "feedback": "Correct! useState allows React to track state values and re-render the component whenever those values change.",
+        "text": "userProfile",
+        "feedback": "This is camelCase, not PascalCase. React component names should start with a capital letter.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "UserProfile",
+        "feedback": "Correct! React component names are typically written in PascalCase.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "user-profile",
+        "feedback": "This is kebab-case, not PascalCase.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "USERPROFILE",
+        "feedback": "This is uppercase, not PascalCase.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-2",
+    "kcId": "kc-1",
+    "question": "Why are React component names usually written in PascalCase?",
+    "options": {
+      "A": {
+        "text": "Because React uses capitalized names to identify components",
+        "feedback": "Correct! React treats capitalized names as custom components and lowercase names as HTML elements.",
         "isCorrect": true
       },
       "B": {
+        "text": "Because JavaScript requires functions to start with capital letters",
+        "feedback": "JavaScript does not require functions to start with capital letters.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Because PascalCase makes components render faster",
+        "feedback": "PascalCase is for naming conventions and React recognition, not performance.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because JSX only works with uppercase text",
+        "feedback": "JSX works regardless of capitalization. React uses capitalization to distinguish components from HTML elements.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-3",
+    "kcId": "kc-1",
+    "question": "Which component name follows React naming conventions?",
+    "options": {
+      "A": {
+        "text": "shoppingcart",
+        "feedback": "This is lowercase and does not follow PascalCase naming conventions.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "shoppingCart",
+        "feedback": "This is camelCase, not PascalCase.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "ShoppingCart",
+        "feedback": "Correct! React component names are typically written in PascalCase.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "shopping-cart",
+        "feedback": "This is kebab-case, not PascalCase.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-4",
+    "kcId": "kc-1",
+    "question": "What happens if a React component is named 'navbar' instead of 'Navbar'?",
+    "options": {
+      "A": {
+        "text": "React treats it as an HTML element instead of a component",
+        "feedback": "Correct! Lowercase names are treated as HTML elements in JSX.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "React automatically changes it to 'Navbar'",
+        "feedback": "React does not automatically rename components.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "The component will render faster",
+        "feedback": "Naming does not affect rendering speed.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Nothing changes because capitalization does not matter",
+        "feedback": "Capitalization matters in React because it determines whether something is treated as a component or an HTML element.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.35
+  },
+  {
+    "id": "q-5",
+    "kcId": "kc-1",
+    "question": "Which JSX line correctly renders a component named ProfileCard?",
+    "options": {
+      "A": {
+        "text": "<profileCard />",
+        "feedback": "Lowercase names are treated as HTML elements, not React components.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "<ProfileCard />",
+        "feedback": "Correct! React components should be written in PascalCase and rendered using JSX syntax.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "<profile-card />",
+        "feedback": "This uses kebab-case and would be treated as a custom HTML tag.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "<PROFILECARD />",
+        "feedback": "This is not PascalCase and does not follow React naming conventions.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-6",
+    "kcId": "kc-2",
+    "question": "What must a React component return in order to render correctly?",
+    "options": {
+      "A": {
+        "text": "Only a string",
+        "feedback": "React components are not limited to strings. They must return valid JSX or null.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Valid JSX or null",
+        "feedback": "Correct! A React component must return valid JSX to render UI, or null if it should render nothing.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "A JavaScript variable",
+        "feedback": "A variable can be used inside JSX, but the component itself must return valid JSX or null.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Only HTML elements",
+        "feedback": "React components return JSX, which resembles HTML but is JavaScript syntax.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-7",
+    "kcId": "kc-2",
+    "question": "What happens if a React component does not return anything?",
+    "options": {
+      "A": {
+        "text": "The component will not work correctly because React expects JSX or null to be returned",
+        "feedback": "Correct! React components must return valid JSX or null. Forgetting to return something will cause problems.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "React automatically returns an empty div",
+        "feedback": "React does not automatically add a div for you. Components must explicitly return JSX or null.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "The component will still render normally",
+        "feedback": "A component that returns nothing will not render correctly because React expects JSX or null.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "React converts the function into JSX automatically",
+        "feedback": "React does not automatically generate JSX for a component. The function must explicitly return it.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-8",
+    "kcId": "kc-2",
+    "question": "When would a React component return null?",
+    "options": {
+      "A": {
+        "text": "When the component wants to render nothing",
+        "feedback": "Correct! Returning null tells React to render nothing for that component.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "When the component crashes",
+        "feedback": "Returning null is intentional and does not mean the component crashed.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Whenever the component contains state",
+        "feedback": "Components using state still return JSX. Returning null is only used when nothing should be rendered.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Whenever a component uses an event handler",
+        "feedback": "Event handlers do not require returning null. Components still return JSX unless nothing should render.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-9",
+    "kcId": "kc-2",
+    "question": "Which of the following is a valid return value for a React component?",
+    "options": {
+      "A": {
+        "text": "return 42;",
+        "feedback": "React components should return valid JSX or null, not arbitrary values like numbers.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "return null;",
+        "feedback": "Correct! Returning null is valid and tells React to render nothing.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "return updatePage();",
+        "feedback": "Calling a function is not necessarily valid unless it returns JSX. Components themselves should return JSX or null.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "return setCount(1);",
+        "feedback": "State setters do not return JSX. Components must return valid JSX or null.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.35
+  },
+  {
+    "id": "q-10",
+    "kcId": "kc-2",
+    "question": "Why is returning JSX important in a React component?",
+    "options": {
+      "A": {
+        "text": "Because JSX tells React what should appear on the screen",
+        "feedback": "Correct! JSX describes what React should render in the UI.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Because JSX makes components run faster",
+        "feedback": "JSX is not primarily about performance. It describes what UI should be rendered.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Because React components cannot contain JavaScript",
+        "feedback": "React components are JavaScript functions and can absolutely contain JavaScript.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because JSX automatically updates state",
+        "feedback": "JSX does not update state. State updates happen through hooks like useState.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-11",
+    "kcId": "kc-3",
+    "question": "Which syntax is used to render a React component named Header?",
+    "options": {
+      "A": {
+        "text": "<Header />",
+        "feedback": "Correct! React components are rendered using JSX syntax like <Header />.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Header()",
+        "feedback": "Calling a component like a regular function is not the standard way to render it in React. Components should be rendered using JSX syntax.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "{Header}",
+        "feedback": "This only references the component function. It does not render the component.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "<header></header>",
+        "feedback": "This is an HTML element, not a React component. React components begin with a capital letter.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-12",
+    "kcId": "kc-3",
+    "question": "Why is <Counter /> used instead of Counter() when rendering a React component?",
+    "options": {
+      "A": {
+        "text": "Because React components must always be written in lowercase",
+        "feedback": "React components are actually written in PascalCase (capitalized names).",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Because JSX syntax tells React to treat it as a component",
+        "feedback": "Correct! JSX syntax tells React to render the component properly and integrate it into React’s rendering system.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Because regular functions cannot return JSX",
+        "feedback": "Regular functions can return JSX. React components are functions themselves.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because React does not allow functions to be called",
+        "feedback": "React allows functions to be called. The preferred way to render components is through JSX syntax.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-13",
+    "kcId": "kc-3",
+    "question": "Which example correctly renders a component named ProfileCard?",
+    "options": {
+      "A": {
+        "text": "{ProfileCard()}",
+        "feedback": "This directly calls the function instead of rendering it using JSX syntax.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "<profileCard />",
+        "feedback": "Component names should start with a capital letter in React. Lowercase names are treated as HTML elements.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "<ProfileCard />",
+        "feedback": "Correct! React components are rendered with JSX syntax and PascalCase naming.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "render(ProfileCard)",
+        "feedback": "React components are rendered using JSX syntax, not a render() function like this.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-14",
+    "kcId": "kc-3",
+    "question": "What is wrong with this code?\n\n<HomePage></HomePage>",
+    "options": {
+      "A": {
+        "text": "Nothing is wrong. This is valid JSX syntax for rendering a component",
+        "feedback": "Correct! <HomePage></HomePage> is valid JSX syntax, though <HomePage /> is more commonly used for components without children.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Components cannot be rendered with angle brackets",
+        "feedback": "React components are rendered using JSX syntax with angle brackets.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "The component should be wrapped in curly braces",
+        "feedback": "Components are rendered directly in JSX using angle brackets, not wrapped in curly braces.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Components cannot contain capital letters",
+        "feedback": "React component names should begin with a capital letter.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.35
+  },
+  {
+    "id": "q-15",
+    "kcId": "kc-3",
+    "question": "What does JSX syntax like <Navbar /> tell React?",
+    "options": {
+      "A": {
+        "text": "To create a normal JavaScript variable",
+        "feedback": "JSX syntax is used for rendering UI, not creating variables.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "To render a React component",
+        "feedback": "Correct! JSX syntax tells React to render the component.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "To automatically update component state",
+        "feedback": "JSX does not automatically update state. State updates happen through hooks like useState.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "To call a browser API",
+        "feedback": "JSX syntax is for rendering UI, not browser APIs.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-16",
+    "kcId": "kc-4",
+    "question": "Why is the useState hook necessary in a React component?",
+    "options": {
+      "A": {
         "text": "It lets JavaScript variables be used inside JSX",
         "feedback": "useState is not required just to display values in JSX. Regular variables can also be displayed, but useState is needed when the value changes and the UI should update.",
         "isCorrect": false
+      },
+      "B": {
+        "text": "It allows React to track values and re-render the component when those values change",
+        "feedback": "Correct! useState allows React to track state values and re-render the component whenever those values change.",
+        "isCorrect": true
       },
       "C": {
         "text": "It automatically updates all HTML elements in the component",
@@ -29,24 +464,24 @@
     "pGuess": 0.3
   },
   {
-    "id": "q-2",
-    "kcId": "kc-1",
+    "id": "q-17",
+    "kcId": "kc-4",
     "question": "What problem does useState solve in a React component?",
     "options": {
       "A": {
-        "text": "It allows a component to remember changing values between renders",
-        "feedback": "Correct! useState allows a component to preserve values between renders and update the UI when those values change.",
-        "isCorrect": true
-      },
-      "B": {
         "text": "It allows functions to return JSX",
         "feedback": "Components can return JSX without useState. The purpose of useState is to manage changing values that should persist between renders.",
         "isCorrect": false
       },
-      "C": {
+      "B": {
         "text": "It makes variables update faster",
         "feedback": "useState is not used to make variables update faster. It is used so React can track state changes and re-render the component when needed.",
         "isCorrect": false
+      },
+      "C": {
+        "text": "It allows a component to remember changing values between renders",
+        "feedback": "Correct! useState allows a component to preserve values between renders and update the UI when those values change.",
+        "isCorrect": true
       },
       "D": {
         "text": "It allows components to call other components",
@@ -55,6 +490,93 @@
       }
     },
     "pSlip": 0.2,
-    "pGuess": 0.4
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-18",
+    "kcId": "kc-4",
+    "question": "When should you use the useState hook in a React component?",
+    "options": {
+      "A": {
+        "text": "Whenever a component contains JSX",
+        "feedback": "A component can contain JSX without using useState. useState is only needed when the component needs to track changing values.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Whenever a component contains a function",
+        "feedback": "Components can contain functions without using useState. useState is only necessary when managing changing state.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Whenever you create a variable inside a component",
+        "feedback": "Regular variables can still be used inside components. useState is specifically for values that should trigger a re-render when updated.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "When a value changes and the UI should update",
+        "feedback": "Correct! useState should be used when a value changes over time and those changes should be reflected in the UI.",
+        "isCorrect": true
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-19",
+    "kcId": "kc-4",
+    "question": "Why would a regular variable not work well for updating information on a webpage in React?",
+    "options": {
+      "A": {
+        "text": "Because regular variables are slower than state variables",
+        "feedback": "The issue is not performance. React simply does not re-render when a normal variable changes.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Because changing a regular variable will not automatically trigger a re-render",
+        "feedback": "Correct! React does not track regular variables, so changing them will not automatically update what appears on the screen.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Because React components cannot use regular variables",
+        "feedback": "React components can absolutely use regular variables. The issue is that changing them does not trigger a re-render.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because regular variables can only store numbers",
+        "feedback": "Regular variables can store any type of data. The problem is that React does not track changes to them for rendering.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.35
+  },
+  {
+    "id": "q-20",
+    "kcId": "kc-4",
+    "question": "A student wants to update text shown on a webpage after clicking a button. Why should they use useState?",
+    "options": {
+      "A": {
+        "text": "Because buttons only work when useState is used",
+        "feedback": "Buttons can work perfectly fine without useState. useState is needed when clicking the button changes displayed information.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Because React does not allow variables inside components",
+        "feedback": "React components can use variables. However, normal variables do not trigger re-renders when changed.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Because useState allows React to update the displayed information when the value changes",
+        "feedback": "Correct! useState tells React when state changes so the component can re-render and display updated information.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Because useState makes button clicks happen faster",
+        "feedback": "useState is not about performance. It is used to track changing values and update the UI.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.25
   }
 ]

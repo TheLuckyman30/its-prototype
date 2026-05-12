@@ -2,10 +2,22 @@
   {
     "id": "cat-1",
     "title": "Basics of useState",
-    "kcsUnderstanding": {
-      "none": ["kc-1"],
-      "adequate": [],
-      "excellent": []
-    }
+    "none": ["kc-1", "kc-2", "kc-3"],
+    "adequate": [],
+    "excellent": []
+  },
+  {
+    "id": "cat-2",
+    "title": "Basics of useState",
+    "none": ["kc-4"],
+    "adequate": [],
+    "excellent": []
+  },
+  {
+    "id": "cat-3",
+    "title": "Call the useState Hook",
+    "none": [],
+    "adequate": [],
+    "excellent": []
   }
 ]

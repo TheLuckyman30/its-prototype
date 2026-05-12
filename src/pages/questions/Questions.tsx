@@ -1,16 +1,25 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 import { Button, Container, Flex, Pagination } from "@mantine/core";
-import { EndSection } from "./components/EndSection";
-import { useQuizStore } from "@utils";
+import { useAppStore, useQuizStore, useStudentStore } from "@utils/zustand";
+import { PAGES } from "@utils/constants";
+import { findById, updateKnowledgeLevels } from "@utils/helpers";
 
 export function Questions() {
-  const questions = useQuizStore((state) => state.currentQuestions);
+  const quiz = useQuizStore((state) => state.quiz);
+  const { kcs, categories, currentKcId, currentCategoryId, updateCategory } =
+    useStudentStore();
   const [activeQuestion, setActiveQuestion] = useState<number>(1);
-  const [showEndScreen, setShowEndScreen] = useState<boolean>(false);
   const [qaPairs, setQaPairs] = useState<Map<string, string>>(
     new Map<string, string>(),
   );
+  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
+
+  const kc = findById(currentKcId, kcs);
+  const currentCategory = findById(currentCategoryId, categories);
+
+  if (!quiz || !kc || !currentCategory) return null;
+  const questions = quiz.questions;
 
   const currentQuestion = questions[activeQuestion - 1];
   const questionElement = (
@@ -24,30 +33,29 @@ export function Questions() {
   );
   const answeredAllQuestions = qaPairs.size === questions.length;
 
+  const handleSubmit = () => {
+    const updatedCategory = updateKnowledgeLevels(currentCategory, kc);
+    updateCategory(updatedCategory);
+    setCurrentPage(PAGES.endScreen);
+  };
+
   return (
     <Container>
-      {!showEndScreen ? (
-        <Flex gap={"5rem"} direction={"column"}>
-          {questionElement}
-          <Flex justify={"space-between"}>
-            <Pagination
-              total={questions.length}
-              value={activeQuestion}
-              onChange={setActiveQuestion}
-            />
-            {activeQuestion === questions.length && (
-              <Button
-                onClick={() => setShowEndScreen(true)}
-                disabled={!answeredAllQuestions}
-              >
-                End Screen
-              </Button>
-            )}
-          </Flex>
+      <Flex gap={"5rem"} direction={"column"}>
+        {questionElement}
+        <Flex justify={"space-between"}>
+          <Pagination
+            total={questions.length}
+            value={activeQuestion}
+            onChange={setActiveQuestion}
+          />
+          {activeQuestion === questions.length && (
+            <Button disabled={!answeredAllQuestions} onClick={handleSubmit}>
+              End Screen
+            </Button>
+          )}
         </Flex>
-      ) : (
-        <EndSection kcId={currentQuestion.kcId} />
-      )}
+      </Flex>
     </Container>
   );
 }

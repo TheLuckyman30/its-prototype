@@ -1,29 +1,28 @@
-import { Questions } from "./pages";
-import { useState, type JSX } from "react";
-import { selectKc, useQuizStore } from "@utils";
-import questions from "@data/questions.json";
-import categories from "@data/categories.json";
+import { useQuizStore, useAppStore, useStudentStore } from "@utils/zustand";
+import { useEffect } from "react";
+import { buildQuestions } from "@utils/helpers";
 import "./App.css";
 
-interface Page {
-  name: string;
-  element: JSX.Element;
-}
-
-const pages: Page[] = [{ name: "Question", element: <Questions /> }];
-
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>(pages[0]);
-  const setCurrentQuestions = useQuizStore(
-    (state) => state.setCurrentQuestions,
-  );
-  console.log(selectKc(categories[0]));
+  const currentKcId = useStudentStore((state) => state.currentKcId);
+  const Page = useAppStore((state) => state.currentPage);
+  const setQuiz = useQuizStore((state) => state.setQuiz);
+  useEffect(() => {
+    const quizQuestions = buildQuestions(currentKcId);
+    const defaultQuiz = {
+      id: 0,
+      kcId: "kc-1",
+      categoryId: "cat-1",
+      questions: quizQuestions,
+      qaPairs: new Map<string, string>(),
+    };
 
-  setCurrentQuestions(questions);
+    setQuiz(defaultQuiz);
+  }, [setQuiz]);
 
   return (
     <main className="flex justify-center items-center h-screen w-full">
-      {currentPage.element}
+      <Page />
     </main>
   );
 }

@@ -1,5 +1,4 @@
 import { useForm } from "@mantine/form";
-import { calcProbOfKnown, useStudentStore, type QuestionType } from "@utils";
 import {
   Alert,
   Button,
@@ -10,6 +9,9 @@ import {
   RadioGroup,
   Text,
 } from "@mantine/core";
+import { calcProbOfKnown, findById } from "@utils/helpers";
+import { useStudentStore } from "@utils/zustand";
+import type { QuestionType } from "@utils/interfaces";
 
 interface QuestionProps {
   question: QuestionType;
@@ -28,12 +30,15 @@ export function Question({
     mode: "uncontrolled",
     initialValues: { answer },
   });
-  const { knowledgeComponents, updateKc } = useStudentStore();
+  const kcs = useStudentStore((state) => state.kcs);
+  const currentKcId = useStudentStore((state) => state.currentKcId);
+  const updateKc = useStudentStore((state) => state.updateKc);
+
   const feedback = question.options[answer]?.feedback ?? "";
   const isCorrect = question.options[answer]?.isCorrect ?? false;
 
   const handleSubmit = ({ answer }: typeof form.values) => {
-    const kc = knowledgeComponents.find((kc) => kc.id === question.kcId);
+    const kc = findById(currentKcId, kcs);
     if (kc) {
       const { pKnown, pWillLearn } = kc;
       const { pGuess, pSlip } = question;
@@ -71,7 +76,11 @@ export function Question({
           <Grid>
             {Object.entries(question.options).map(([key, value]) => (
               <GridCol key={key} span={{ base: 12, sm: 6 }}>
-                <Radio value={key} label={value.text} />
+                <Radio
+                  value={key}
+                  label={value.text}
+                  className={`${value.isCorrect ? "text-emerald-500" : ""}`}
+                />
               </GridCol>
             ))}
           </Grid>
