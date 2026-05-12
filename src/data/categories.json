@@ -2,14 +2,14 @@
   {
     "id": "cat-1",
     "title": "Basics of useState",
-    "none": ["kc-1"],
+    "none": ["kc-1", "kc-2", "kc-3"],
     "adequate": [],
     "excellent": []
   },
   {
     "id": "cat-2",
     "title": "Basics of useState",
-    "none": [],
+    "none": ["kc-4"],
     "adequate": [],
     "excellent": []
   },

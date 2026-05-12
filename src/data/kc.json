@@ -1,9 +1,30 @@
 [
   {
     "id": "kc-1",
-    "name": "Identify why the useState hook is necessary",
+    "name": "Identify that PascalCase is used for react component names",
     "pKnown": 0.2,
     "pWillLearn": 0.15,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-2",
+    "name": "Identify that a react component must return valid JSX or null",
+    "pKnown": 0.3,
+    "pWillLearn": 0.2,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-3",
+    "name": "Identify the JSX syntax needed to call a component",
+    "pKnown": 0.1,
+    "pWillLearn": 0.3,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-4",
+    "name": "Identify why the useState hook is necessary",
+    "pKnown": 0.1,
+    "pWillLearn": 0.25,
     "knowledgeLevel": "none"
   }
 ]

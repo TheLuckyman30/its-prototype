@@ -76,7 +76,11 @@ export function Question({
           <Grid>
             {Object.entries(question.options).map(([key, value]) => (
               <GridCol key={key} span={{ base: 12, sm: 6 }}>
-                <Radio value={key} label={value.text} />
+                <Radio
+                  value={key}
+                  label={value.text}
+                  className={`${value.isCorrect ? "text-emerald-500" : ""}`}
+                />
               </GridCol>
             ))}
           </Grid>

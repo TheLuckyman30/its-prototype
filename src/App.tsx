@@ -1,17 +1,19 @@
-import { useQuizStore, useAppStore } from "@utils/zustand";
-import questions from "@data/questions.json";
-import "./App.css";
+import { useQuizStore, useAppStore, useStudentStore } from "@utils/zustand";
 import { useEffect } from "react";
+import { buildQuestions } from "@utils/helpers";
+import "./App.css";
 
 function App() {
+  const currentKcId = useStudentStore((state) => state.currentKcId);
   const Page = useAppStore((state) => state.currentPage);
   const setQuiz = useQuizStore((state) => state.setQuiz);
   useEffect(() => {
+    const quizQuestions = buildQuestions(currentKcId);
     const defaultQuiz = {
       id: 0,
       kcId: "kc-1",
       categoryId: "cat-1",
-      questions,
+      questions: quizQuestions,
       qaPairs: new Map<string, string>(),
     };
 
