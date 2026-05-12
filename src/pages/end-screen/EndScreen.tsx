@@ -1,5 +1,5 @@
 import { Alert, Button, Flex } from "@mantine/core";
-import { PAGES } from "@utils/constants";
+import { CATEGORY_MAP, PAGES } from "@utils/constants";
 import { findById, getQuizFeedback } from "@utils/helpers";
 import { useAppStore, useQuizStore, useStudentStore } from "@utils/zustand";
 
@@ -9,7 +9,6 @@ export function EndScreen() {
     categories,
     currentKcId,
     currentCategoryId,
-    setCurrentCategory,
     setCurrentKc,
     updateCategory,
   } = useStudentStore();
@@ -20,25 +19,25 @@ export function EndScreen() {
 
   if (!kc || !currentCategory) return null;
 
-  const { feedback, quiz, selectedCategory, selectedKc } = getQuizFeedback(
+  const { feedback, quiz, selectedKc } = getQuizFeedback(
     kcs,
-    categories,
     kc,
     currentCategory,
   );
 
   const handleSubmit = () => {
     if (quiz) {
+      setCurrentKc(selectedKc?.id ?? "");
+      setQuiz(quiz);
       setCurrentPage(PAGES.questions);
     } else {
-      setCurrentPage(PAGES.questions); // Change this to home page when implemented
-      if (selectedCategory) {
-        updateCategory({ ...selectedCategory, unlocked: true });
+      const nextCategoryId = CATEGORY_MAP[currentCategoryId];
+      const nextCategory = findById(nextCategoryId, categories);
+      if (nextCategory) {
+        updateCategory({ ...nextCategory, unlocked: true });
       }
+      setCurrentPage(PAGES.home);
     }
-    setQuiz(quiz);
-    setCurrentKc(selectedKc?.id ?? "");
-    setCurrentCategory(selectedCategory?.id ?? "");
   };
 
   return (

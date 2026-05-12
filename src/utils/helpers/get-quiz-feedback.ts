@@ -43,7 +43,7 @@ const options2 = [
     condition: (currentCategory: Category) => {
       return currentCategory.adequate.size < currentCategory.excellent.size;
     },
-    flags: { useNewCategory: true },
+    flags: {},
   },
 ];
 
@@ -51,7 +51,6 @@ type Options = (typeof options)[number] | (typeof options2)[number];
 
 export function getQuizFeedback(
   allKcs: KnowledgeComponent[],
-  categories: Category[],
   currentKc: KnowledgeComponent,
   currentCategory: Category,
 ) {
@@ -70,13 +69,12 @@ export function getQuizFeedback(
     color = option.color ?? "";
   }
 
-  const { quiz, selectedCategory, selectedKc } = buildNewQuiz(
+  const { quiz, selectedKc } = buildNewQuiz(
     currentCategory,
     currentKc,
     allKcs,
-    categories,
     option?.flags,
   );
 
-  return { feedback: { text, color }, quiz, selectedCategory, selectedKc };
+  return { feedback: { text, color }, quiz, selectedKc };
 }
