@@ -12,6 +12,7 @@ import {
 import { calcProbOfKnown, findById } from "@utils/helpers";
 import { useStudentStore } from "@utils/zustand";
 import type { QuestionType } from "@utils/interfaces";
+import { useState } from "react";
 
 interface QuestionProps {
   question: QuestionType;
@@ -27,12 +28,13 @@ export function Question({
   setQaPairs,
 }: QuestionProps) {
   const form = useForm({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: { answer },
   });
   const kcs = useStudentStore((state) => state.kcs);
   const currentKcId = useStudentStore((state) => state.currentKcId);
   const updateKc = useStudentStore((state) => state.updateKc);
+  const [disabled, setDisabled] = useState<boolean>(answer !== "");
 
   const feedback = question.options[answer]?.feedback ?? "";
   const isCorrect = question.options[answer]?.isCorrect ?? false;
@@ -55,6 +57,7 @@ export function Question({
     }
     const newPairs = new Map(qaPairs);
     newPairs.set(question.id, answer);
+    setDisabled(true);
     setQaPairs(newPairs);
   };
 
@@ -72,7 +75,11 @@ export function Question({
         >
           {feedback}
         </Alert>
-        <RadioGroup key={form.key("answer")} {...form.getInputProps("answer")}>
+        <RadioGroup
+          key={form.key("answer")}
+          {...form.getInputProps("answer")}
+          disabled={disabled}
+        >
           <Grid>
             {Object.entries(question.options).map(([key, value]) => (
               <GridCol key={key} span={{ base: 12, sm: 6 }}>
@@ -86,7 +93,9 @@ export function Question({
           </Grid>
         </RadioGroup>
         <Flex justify="start">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={!form.values.answer || disabled}>
+            Submit
+          </Button>
         </Flex>
       </Flex>
     </form>
