@@ -1,7 +1,8 @@
 [
   {
     "id": "cat-1",
-    "title": "Basics of useState",
+    "title": "Basics of React Components",
+    "unlocked": true,
     "none": ["kc-1", "kc-2", "kc-3"],
     "adequate": [],
     "excellent": []
@@ -9,6 +10,7 @@
   {
     "id": "cat-2",
     "title": "Basics of useState",
+    "unlocked": false,
     "none": ["kc-4"],
     "adequate": [],
     "excellent": []
@@ -16,6 +18,7 @@
   {
     "id": "cat-3",
     "title": "Call the useState Hook",
+    "unlocked": false,
     "none": [],
     "adequate": [],
     "excellent": []

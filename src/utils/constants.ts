@@ -1,6 +1,6 @@
-import { EndScreen, Questions } from "@pages";
+import { EndScreen, Home, Questions } from "@pages";
 
-export const PAGES = { questions: Questions, endScreen: EndScreen };
+export const PAGES = { questions: Questions, endScreen: EndScreen, home: Home };
 
 export const CATEGORY_MAP: Record<string, string> = {
   "cat-1": "cat-2",
