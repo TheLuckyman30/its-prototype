@@ -42,6 +42,10 @@ export function Questions() {
   return (
     <Container>
       <Flex gap={"5rem"} direction={"column"}>
+        <Flex gap={"0.5rem"} direction={"column"}>
+          <h1 className="text-2xl font-bold">{currentCategory.title}</h1>
+          <h2 className="text-lg italic">{kc.name}</h2>
+        </Flex>
         {questionElement}
         <Flex justify={"space-between"}>
           <Pagination
