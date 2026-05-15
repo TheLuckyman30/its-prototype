@@ -19,7 +19,7 @@
     "id": "cat-3",
     "title": "Call the useState Hook",
     "unlocked": false,
-    "none": [],
+    "none": ["kc-9", "kc-10", "kc-11", "kc-12", "kc-13"],
     "adequate": [],
     "excellent": []
   }

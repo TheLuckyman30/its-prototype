@@ -54,5 +54,40 @@
     "pKnown": 0.1,
     "pWillLearn": 0.2,
     "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-9",
+    "name": "Provide a default value to useState",
+    "pKnown": 0.2,
+    "pWillLearn": 0.2,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-10",
+    "name": "Provide type information to useState",
+    "pKnown": 0.15,
+    "pWillLearn": 0.25,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-11",
+    "name": "Use array destructing to store the returned values",
+    "pKnown": 0.2,
+    "pWillLearn": 0.2,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-12",
+    "name": "Identify which value is the state variable",
+    "pKnown": 0.2,
+    "pWillLearn": 0.2,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-13",
+    "name": "Identify which value is the state function",
+    "pKnown": 0.2,
+    "pWillLearn": 0.2,
+    "knowledgeLevel": "none"
   }
 ]

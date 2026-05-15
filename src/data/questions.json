@@ -1015,7 +1015,6 @@
     "pSlip": 0.1,
     "pGuess": 0.2
   },
-
   {
     "id": "q-36",
     "kcId": "kc-8",
@@ -1072,6 +1071,93 @@
       }
     },
     "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-38",
+    "kcId": "kc-8",
+    "question": "Which example correctly follows the rules for calling useState?",
+    "options": {
+      "A": {
+        "text": "Calling useState inside a for loop",
+        "feedback": "Hooks should never be called inside loops because the order of hooks could change between renders.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Calling useState inside a button click function",
+        "feedback": "Hooks should not be called inside event handlers.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Calling useState at the top of the component before any conditions",
+        "feedback": "Correct! Hooks should be called at the top level of the component so React can track them consistently.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Calling useState inside an if statement",
+        "feedback": "Hooks should not be called conditionally because React expects them in the same order every render.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.1
+  },
+  {
+    "id": "q-39",
+    "kcId": "kc-8",
+    "question": "Why is this code incorrect?\n\nfunction App() {\n  if (true) {\n    const [count, setCount] = useState(0);\n  }\n}",
+    "options": {
+      "A": {
+        "text": "Because useState cannot store numbers",
+        "feedback": "useState can absolutely store numbers. The issue is where the hook is being called.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Because hooks should not be called inside conditions",
+        "feedback": "Correct! Hooks must always be called at the top level of a component.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Because useState only works with strings",
+        "feedback": "useState works with many different data types, including numbers.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because React components cannot contain if statements",
+        "feedback": "Components can contain if statements, but hooks cannot be placed inside them.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-40",
+    "kcId": "kc-8",
+    "question": "Which location is NOT a valid place to call useState?",
+    "options": {
+      "A": {
+        "text": "At the top of a React component",
+        "feedback": "This is the correct place to call hooks.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Before JSX is returned",
+        "feedback": "This is valid as long as the hook is still at the top level of the component.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Inside a loop",
+        "feedback": "Correct! Hooks should never be called inside loops because React relies on consistent hook order.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Near the top of a component function",
+        "feedback": "This is generally where hooks should be placed.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
     "pGuess": 0.3
   }
 ]
