@@ -2,7 +2,7 @@
   {
     "id": "q-1",
     "kcId": "kc-1",
-    "question": "Which of the following is written in PascalCase and could be used as a React component name?",
+    "question": "Which of the following is written in pascal case and could be used as a React component name?",
     "options": {
       "A": {
         "text": "userProfile",
@@ -31,7 +31,7 @@
   {
     "id": "q-2",
     "kcId": "kc-1",
-    "question": "Why are React component names usually written in PascalCase?",
+    "question": "Why are React component names usually written in pascal case?",
     "options": {
       "A": {
         "text": "Because React uses capitalized names to identify components",
@@ -176,7 +176,7 @@
   {
     "id": "q-7",
     "kcId": "kc-2",
-    "question": "What happens if a React component does not return anything?",
+    "question": "What happens if there is no return statement present within a React component?",
     "options": {
       "A": {
         "text": "The component will not work correctly because React expects JSX or null to be returned",
@@ -205,26 +205,26 @@
   {
     "id": "q-8",
     "kcId": "kc-2",
-    "question": "When would a React component return null?",
+    "question": "What happens if you return null from a React component?",
     "options": {
       "A": {
-        "text": "When the component wants to render nothing",
+        "text": "The component would render nothing",
         "feedback": "Correct! Returning null tells React to render nothing for that component.",
         "isCorrect": true
       },
       "B": {
-        "text": "When the component crashes",
-        "feedback": "Returning null is intentional and does not mean the component crashed.",
+        "text": "The component would crash",
+        "feedback": "Returning null is perfectly valid and will not crash the component.",
         "isCorrect": false
       },
       "C": {
-        "text": "Whenever the component contains state",
-        "feedback": "Components using state still return JSX. Returning null is only used when nothing should be rendered.",
+        "text": "It breaks the components state",
+        "feedback": "Returning null simply tells React to render nothing. It will have no effect on the components state.",
         "isCorrect": false
       },
       "D": {
-        "text": "Whenever a component uses an event handler",
-        "feedback": "Event handlers do not require returning null. Components still return JSX unless nothing should render.",
+        "text": "It would display 'null' on the screen",
+        "feedback": "Incorrect. Returning null tells React to render nothing. Therefore no text will be rendered.",
         "isCorrect": false
       }
     },
@@ -756,7 +756,7 @@
   {
     "id": "q-27",
     "kcId": "kc-6",
-    "question": "In the code below, which variable stores the state value?\n\nconst [count, setCount] = useState(0);",
+    "question": "In the code below, which variable stores the state value?\n\nconst [count, setCount] = useState<number>(0);",
     "options": {
       "A": {
         "text": "count",
@@ -814,7 +814,7 @@
   {
     "id": "q-29",
     "kcId": "kc-6",
-    "question": "In the code below, which value contains the current state?\n\nconst [username, setUsername] = useState('Bob');",
+    "question": "In the code below, which value contains the current state?\n\nconst [username, setUsername] = useState<string>('Bob');",
     "options": {
       "A": {
         "text": "setUsername",
@@ -902,7 +902,7 @@
   {
     "id": "q-32",
     "kcId": "kc-7",
-    "question": "In the code below, which value is the state function?\n\nconst [name, setName] = useState('Bob');",
+    "question": "In the code below, which value is the state function?\n\nconst [name, setName] = useState<string>('Bob');",
     "options": {
       "A": {
         "text": "name",
@@ -960,7 +960,7 @@
   {
     "id": "q-34",
     "kcId": "kc-7",
-    "question": "Which value would you call to update state?\n\nconst [score, setScore] = useState(0);",
+    "question": "What would you use to update score?\n\nconst [score, setScore] = useState<number>(0);",
     "options": {
       "A": {
         "text": "score",
@@ -1105,7 +1105,7 @@
   {
     "id": "q-39",
     "kcId": "kc-8",
-    "question": "Why is this code incorrect?\n\nfunction App() {\n  if (true) {\n    const [count, setCount] = useState(0);\n  }\n}",
+    "question": "Why is this code incorrect?\n\nfunction App() {\n  if (true) {\n    const [count, setCount] = useState<number>(0);\n  }\n}",
     "options": {
       "A": {
         "text": "Because useState cannot store numbers",
@@ -1221,7 +1221,7 @@
   {
     "id": "q-43",
     "kcId": "kc-9",
-    "question": "What is the initial value of message in this code?\n\nconst [message, setMessage] = useState('Hello');",
+    "question": "What is the initial value of message in this code?\n\nconst [message, setMessage] = useState<string>('Hello');",
     "options": {
       "A": {
         "text": "undefined",
@@ -1250,7 +1250,7 @@
   {
     "id": "q-44",
     "kcId": "kc-9",
-    "question": "What will count be initialized to?\n\nconst [count, setCount] = useState(5);",
+    "question": "What will count be initialized to?\n\nconst [count, setCount] = useState<number>(5);",
     "options": {
       "A": {
         "text": "0",
@@ -1424,11 +1424,11 @@
   {
     "id": "q-50",
     "kcId": "kc-10",
-    "question": "What is wrong with this code?\n\nconst [count, setCount] = useState<number>();",
+    "question": "What is wrong with this code?\n\nconst [name, setName] = useState<'Bob'>('Bill'); // This variable should be able to be set as any string.",
     "options": {
       "A": {
         "text": "Nothing is wrong",
-        "feedback": "Incorrect. A default value should usually be provided.",
+        "feedback": "Incorrect. Since 'Bob' is provided as the type, 'name' can only ever be set as 'Bob'. Therefore, it cannot be set as 'Bill'.",
         "isCorrect": false
       },
       "B": {
@@ -1437,13 +1437,13 @@
         "isCorrect": false
       },
       "C": {
-        "text": "No initial value is provided",
-        "feedback": "Correct! The state has a type but no initial value.",
+        "text": "The type is being set as 'Bob' when it should be string",
+        "feedback": "Correct! The state does not have the correct typing. Setting it to 'Bob' tells TypeScript that 'name' will only ever be 'Bob'. Since that is not the intended behavior, the correct typing is string",
         "isCorrect": true
       },
       "D": {
-        "text": "setCount is incorrectly named",
-        "feedback": "Incorrect. The setter naming is fine.",
+        "text": "'Bill' is being given as the default value when 'name' can only be set to 'Bob'",
+        "feedback": "While the statement is correct, it does not solve the problem. 'Name' should be able to be set as any string. Keeping 'Bob' as the typing will prevent 'name' from being set as anything else.",
         "isCorrect": false
       }
     },
@@ -1483,7 +1483,7 @@
   {
     "id": "q-52",
     "kcId": "kc-11",
-    "question": "What does this code do?\n\nconst [value, setValue] = useState(0);",
+    "question": "What does this code do?\n\nconst [value, setValue] = useState<number>(0);",
     "options": {
       "A": {
         "text": "Creates an object with value and setValue",
@@ -1541,7 +1541,7 @@
   {
     "id": "q-54",
     "kcId": "kc-11",
-    "question": "Which part of this statement is array destructuring?\n\nconst [count, setCount] = useState(0);",
+    "question": "Which part of this statement is array destructuring?\n\nconst [count, setCount] = useState<number>(0);",
     "options": {
       "A": {
         "text": "useState(0)",
@@ -1573,7 +1573,7 @@
     "question": "What happens if you do NOT use array destructuring with useState?",
     "options": {
       "A": {
-        "text": "You cannot access the state value and setter properly",
+        "text": "You will not be able to cleanly access the state variable and state function.",
         "feedback": "Correct! Without destructuring, you cannot cleanly access both returned values.",
         "isCorrect": true
       },
@@ -1599,7 +1599,7 @@
   {
     "id": "q-56",
     "kcId": "kc-12",
-    "question": "In the following code, which variable is the state variable?\n\nconst [count, setCount] = useState(0);",
+    "question": "In the following code, which variable is the state variable?\n\nconst [count, setCount] = useState<number>(0);",
     "options": {
       "A": {
         "text": "setCount",
@@ -1628,7 +1628,7 @@
   {
     "id": "q-57",
     "kcId": "kc-12",
-    "question": "Which part of this code represents the state variable?\n\nconst [name, setName] = useState('Bob');",
+    "question": "Which part of this code represents the state variable?\n\nconst [name, setName] = useState<string>('Bob');",
     "options": {
       "A": {
         "text": "setName",
@@ -1686,7 +1686,7 @@
   {
     "id": "q-59",
     "kcId": "kc-12",
-    "question": "In this code, what is the state variable?\n\nconst [score, setScore] = useState(10);",
+    "question": "In this code, what is the state variable?\n\nconst [score, setScore] = useState<number>(10);",
     "options": {
       "A": {
         "text": "setScore",
@@ -1745,7 +1745,7 @@
   {
     "id": "q-61",
     "kcId": "kc-13",
-    "question": "In the code below, which is the state function?\n\nconst [count, setCount] = useState(0);",
+    "question": "In the code below, which is the state function?\n\nconst [count, setCount] = useState<number>(0);",
     "options": {
       "A": {
         "text": "count",
@@ -1832,7 +1832,7 @@
   {
     "id": "q-64",
     "kcId": "kc-13",
-    "question": "In this example, which is the state function?\n\nconst [name, setName] = useState('Alice');",
+    "question": "In this example, which is the state function?\n\nconst [name, setName] = useState<string>('Alice');",
     "options": {
       "A": {
         "text": "name",
