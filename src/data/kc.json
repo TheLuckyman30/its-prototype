@@ -26,5 +26,33 @@
     "pKnown": 0.1,
     "pWillLearn": 0.25,
     "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-5",
+    "name": "Determine when you need to use the useState hook",
+    "pKnown": 0.05,
+    "pWillLearn": 0.3,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-6",
+    "name": "Identify that useState returns a state variable",
+    "pKnown": 0.1,
+    "pWillLearn": 0.4,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-7",
+    "name": "Identify that useState returns a state function",
+    "pKnown": 0.2,
+    "pWillLearn": 0.3,
+    "knowledgeLevel": "none"
+  },
+  {
+    "id": "kc-8",
+    "name": "Identify that useState has to be called at the top of your component",
+    "pKnown": 0.1,
+    "pWillLearn": 0.2,
+    "knowledgeLevel": "none"
   }
 ]

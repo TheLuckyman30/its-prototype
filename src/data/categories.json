@@ -11,7 +11,7 @@
     "id": "cat-2",
     "title": "Basics of useState",
     "unlocked": false,
-    "none": ["kc-4"],
+    "none": ["kc-4", "kc-5", "kc-6", "kc-7", "kc-8"],
     "adequate": [],
     "excellent": []
   },
