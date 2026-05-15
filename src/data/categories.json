@@ -11,7 +11,7 @@
     "id": "cat-2",
     "title": "Basics of useState",
     "unlocked": false,
-    "none": ["kc-4"],
+    "none": ["kc-4", "kc-5", "kc-6", "kc-7", "kc-8"],
     "adequate": [],
     "excellent": []
   },
@@ -19,7 +19,7 @@
     "id": "cat-3",
     "title": "Call the useState Hook",
     "unlocked": false,
-    "none": [],
+    "none": ["kc-9", "kc-10", "kc-11", "kc-12", "kc-13"],
     "adequate": [],
     "excellent": []
   }

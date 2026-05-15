@@ -578,5 +578,1313 @@
     },
     "pSlip": 0.15,
     "pGuess": 0.25
+  },
+  {
+    "id": "q-21",
+    "kcId": "kc-5",
+    "question": "When should you use the useState hook in a React component?",
+    "options": {
+      "A": {
+        "text": "When a value changes and the webpage should update",
+        "feedback": "Correct! useState should be used for values that can change over time and should trigger a UI update.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Whenever you create any variable inside a component",
+        "feedback": "Not every variable needs useState. Regular variables are fine if the value does not change or affect rendering.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Whenever a component contains JSX",
+        "feedback": "Components can contain JSX without useState. useState is only needed for changing values.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Whenever a component contains a button",
+        "feedback": "Buttons do not automatically require useState. useState is only needed if clicking the button changes displayed information.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-22",
+    "kcId": "kc-5",
+    "question": "A component displays a username that never changes. Should useState be used?",
+    "options": {
+      "A": {
+        "text": "Yes, because every displayed value should use useState",
+        "feedback": "Not every displayed value needs useState. If the value never changes, a normal variable is fine.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "No, because the value does not change",
+        "feedback": "Correct! useState is mainly needed for values that change and should trigger a re-render.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Yes, because JSX only works with state variables",
+        "feedback": "JSX can display regular variables too. useState is only necessary for changing values.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "No, because React components cannot use variables",
+        "feedback": "React components can absolutely use variables. The question is whether the value changes over time.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-23",
+    "kcId": "kc-5",
+    "question": "A student wants a button click to update text shown on the page. What should they do?",
+    "options": {
+      "A": {
+        "text": "Use a regular variable",
+        "feedback": "Regular variables will not trigger a re-render when changed.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Refresh the page every time the button is clicked",
+        "feedback": "Refreshing the page is unnecessary. React state can update the UI automatically.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Use the useState hook",
+        "feedback": "Correct! useState allows React to track changes and update the UI when values change.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Create another component",
+        "feedback": "Creating another component does not solve the issue of updating displayed information.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-24",
+    "kcId": "kc-5",
+    "question": "Which situation would most likely require useState?",
+    "options": {
+      "A": {
+        "text": "Displaying a hardcoded page title",
+        "feedback": "Hardcoded values that never change usually do not need useState.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Tracking a counter that increases when a button is clicked",
+        "feedback": "Correct! The counter changes over time and should update the UI, making useState necessary.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Importing a CSS file",
+        "feedback": "CSS imports do not involve changing values that require state.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Writing a helper function",
+        "feedback": "Helper functions do not require state unless they manage changing UI data.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-25",
+    "kcId": "kc-5",
+    "question": "Why would a regular variable not work for updating information shown on a webpage?",
+    "options": {
+      "A": {
+        "text": "Because regular variables can only store numbers",
+        "feedback": "Regular variables can store many types of values. The problem is not the data type.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Because React does not allow variables inside components",
+        "feedback": "React components can use variables. The issue is how updates are tracked.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Because changing a regular variable does not trigger a re-render",
+        "feedback": "Correct! React does not track changes to normal variables, so the UI will not automatically update.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Because variables are slower than state",
+        "feedback": "The issue is not speed. The problem is that React does not re-render when regular variables change.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-26",
+    "kcId": "kc-6",
+    "question": "What does the first value returned by useState represent?",
+    "options": {
+      "A": {
+        "text": "A function that updates the state",
+        "feedback": "The first value is not the updater function. It stores the current state value.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "The current state value",
+        "feedback": "Correct! The first value returned by useState is the current state variable.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "A React component",
+        "feedback": "useState does not return a component. It returns state-related values.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "A JSX element",
+        "feedback": "useState does not return JSX.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-27",
+    "kcId": "kc-6",
+    "question": "In the code below, which variable stores the state value?\n\nconst [count, setCount] = useState(0);",
+    "options": {
+      "A": {
+        "text": "count",
+        "feedback": "Correct! 'count' stores the current state value.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "setCount",
+        "feedback": "'setCount' is the state function used to update the value.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "useState",
+        "feedback": "useState is the hook being called, not the state variable.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "0",
+        "feedback": "0 is the default value, not the variable storing state.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-28",
+    "kcId": "kc-6",
+    "question": "What is the purpose of the state variable returned by useState?",
+    "options": {
+      "A": {
+        "text": "To call event handlers",
+        "feedback": "Event handlers are separate from state variables.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "To store the current value of state",
+        "feedback": "Correct! The state variable stores the current value managed by React.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "To update the webpage automatically",
+        "feedback": "The state variable stores data. Updating happens through the state function.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "To create new React components",
+        "feedback": "useState does not create components.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-29",
+    "kcId": "kc-6",
+    "question": "In the code below, which value contains the current state?\n\nconst [username, setUsername] = useState('Bob');",
+    "options": {
+      "A": {
+        "text": "setUsername",
+        "feedback": "'setUsername' updates state but does not store the current value.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "'Bob'",
+        "feedback": "'Bob' is the default value, not the variable storing state.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "username",
+        "feedback": "Correct! 'username' stores the current state value.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "useState is the hook itself, not the returned state variable.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-30",
+    "kcId": "kc-6",
+    "question": "Which part of useState would you display in JSX to show the current value?",
+    "options": {
+      "A": {
+        "text": "The state variable",
+        "feedback": "Correct! The state variable contains the current value and can be displayed in JSX.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "The state function",
+        "feedback": "The state function updates the value, but does not contain it.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "The import statement",
+        "feedback": "Imports make hooks available but do not store values.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "The component name",
+        "feedback": "The component name is unrelated to storing state.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+
+  {
+    "id": "q-31",
+    "kcId": "kc-7",
+    "question": "What does the second value returned by useState represent?",
+    "options": {
+      "A": {
+        "text": "The current state value",
+        "feedback": "The first value is the current state value. The second value updates it.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "A function used to update the state",
+        "feedback": "Correct! The second value returned by useState is the state function.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "A JSX element",
+        "feedback": "useState does not return JSX.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "A component prop",
+        "feedback": "The second value is not related to props.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-32",
+    "kcId": "kc-7",
+    "question": "In the code below, which value is the state function?\n\nconst [name, setName] = useState('Bob');",
+    "options": {
+      "A": {
+        "text": "name",
+        "feedback": "'name' stores the current state value.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "setName",
+        "feedback": "Correct! 'setName' is the state function used to update state.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "'Bob'",
+        "feedback": "'Bob' is the default value.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "useState is the hook being called, not the updater function.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-33",
+    "kcId": "kc-7",
+    "question": "What is the purpose of the state function returned by useState?",
+    "options": {
+      "A": {
+        "text": "To directly change HTML on the page",
+        "feedback": "React updates the UI after state changes, but the state function itself does not directly modify HTML.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "To update the state value",
+        "feedback": "Correct! The state function changes the value of state.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "To store the current state value",
+        "feedback": "The state variable stores the current value.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "To create components",
+        "feedback": "The state function only updates state values.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.25
+  },
+  {
+    "id": "q-34",
+    "kcId": "kc-7",
+    "question": "Which value would you call to update state?\n\nconst [score, setScore] = useState(0);",
+    "options": {
+      "A": {
+        "text": "score",
+        "feedback": "'score' stores the current value but does not update it.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "0",
+        "feedback": "0 is only the default value.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "setScore",
+        "feedback": "Correct! 'setScore' is the function used to update state.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "useState creates the state pair but is not called to update state later.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.35
+  },
+  {
+    "id": "q-35",
+    "kcId": "kc-7",
+    "question": "Which of the following names most likely represents a state function?",
+    "options": {
+      "A": {
+        "text": "count",
+        "feedback": "'count' sounds like a state variable rather than an updater function.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "setCount",
+        "feedback": "Correct! State functions are commonly named with the 'set' prefix.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "counter",
+        "feedback": "'counter' sounds like a value, not a setter function.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useCount",
+        "feedback": "'useCount' looks more like a custom hook name.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-36",
+    "kcId": "kc-8",
+    "question": "Where should the useState hook be called inside a React component?",
+    "options": {
+      "A": {
+        "text": "Inside an if statement",
+        "feedback": "Hooks should not be called conditionally.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "At the top level of the component",
+        "feedback": "Correct! Hooks should always be called at the top level of a React component.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Inside event handlers",
+        "feedback": "Hooks should not be called inside event handlers.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Inside loops",
+        "feedback": "Hooks should not be called inside loops.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.1
+  },
+  {
+    "id": "q-37",
+    "kcId": "kc-8",
+    "question": "Why should useState be called at the top of a component?",
+    "options": {
+      "A": {
+        "text": "Because JavaScript requires hooks to be declared first",
+        "feedback": "JavaScript has no such rule. This is a React rule.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "So React can keep hooks in the same order between renders",
+        "feedback": "Correct! React relies on hooks being called in the same order every render.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "To make components render faster",
+        "feedback": "This rule exists for consistency, not speed.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because useState only works above JSX",
+        "feedback": "The issue is hook order, not JSX placement.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-38",
+    "kcId": "kc-8",
+    "question": "Which example correctly follows the rules for calling useState?",
+    "options": {
+      "A": {
+        "text": "Calling useState inside a for loop",
+        "feedback": "Hooks should never be called inside loops because the order of hooks could change between renders.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Calling useState inside a button click function",
+        "feedback": "Hooks should not be called inside event handlers.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Calling useState at the top of the component before any conditions",
+        "feedback": "Correct! Hooks should be called at the top level of the component so React can track them consistently.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Calling useState inside an if statement",
+        "feedback": "Hooks should not be called conditionally because React expects them in the same order every render.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.1
+  },
+  {
+    "id": "q-39",
+    "kcId": "kc-8",
+    "question": "Why is this code incorrect?\n\nfunction App() {\n  if (true) {\n    const [count, setCount] = useState(0);\n  }\n}",
+    "options": {
+      "A": {
+        "text": "Because useState cannot store numbers",
+        "feedback": "useState can absolutely store numbers. The issue is where the hook is being called.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Because hooks should not be called inside conditions",
+        "feedback": "Correct! Hooks must always be called at the top level of a component.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Because useState only works with strings",
+        "feedback": "useState works with many different data types, including numbers.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because React components cannot contain if statements",
+        "feedback": "Components can contain if statements, but hooks cannot be placed inside them.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-40",
+    "kcId": "kc-8",
+    "question": "Which location is NOT a valid place to call useState?",
+    "options": {
+      "A": {
+        "text": "At the top of a React component",
+        "feedback": "This is the correct place to call hooks.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Before JSX is returned",
+        "feedback": "This is valid as long as the hook is still at the top level of the component.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Inside a loop",
+        "feedback": "Correct! Hooks should never be called inside loops because React relies on consistent hook order.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "Near the top of a component function",
+        "feedback": "This is generally where hooks should be placed.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-41",
+    "kcId": "kc-9",
+    "question": "const [count, setCount] = useState<number>(0)\n\nWhat is the inital value of count?",
+    "options": {
+      "A": {
+        "text": "count starts as undefined",
+        "feedback": "Incorrect. The value passed into useState is used as the initial state.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "0",
+        "feedback": "Correct! The value inside useState(0) is the default initial state.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "useState",
+        "feedback": "Incorrect. useState is the hook, not the initial value.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "null",
+        "feedback": "Incorrect. The initial value is whatever is passed into useState, not automatically null.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.05,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-42",
+    "kcId": "kc-9",
+    "question": "What determines the initial value of a useState variable?",
+    "options": {
+      "A": {
+        "text": "React automatically sets it to null",
+        "feedback": "Incorrect. React does not choose the initial value for you.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "The argument passed into useState",
+        "feedback": "Correct! The value inside useState(...) is the default initial state.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "The name of the variable on the left side",
+        "feedback": "Incorrect. Variable names do not determine initial state.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "React decides based on component type",
+        "feedback": "Incorrect. React does not infer initial state from the component.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.4
+  },
+  {
+    "id": "q-43",
+    "kcId": "kc-9",
+    "question": "What is the initial value of message in this code?\n\nconst [message, setMessage] = useState('Hello');",
+    "options": {
+      "A": {
+        "text": "undefined",
+        "feedback": "Incorrect. The initial value is explicitly provided.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "'message'",
+        "feedback": "Incorrect. The variable name is not the value.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "'Hello'",
+        "feedback": "Correct! The string passed into useState is the initial state value.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "null",
+        "feedback": "Incorrect. null is only used if explicitly passed.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-44",
+    "kcId": "kc-9",
+    "question": "What will count be initialized to?\n\nconst [count, setCount] = useState(5);",
+    "options": {
+      "A": {
+        "text": "0",
+        "feedback": "Incorrect. The default is not automatically zero.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "undefined",
+        "feedback": "Incorrect. useState initializes the value with the provided argument.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "5",
+        "feedback": "Correct! The value passed into useState is the initial state.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "count",
+        "feedback": "Incorrect. Variable names are not values.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-45",
+    "kcId": "kc-9",
+    "question": "Which line correctly sets the initial state to an empty string?",
+    "options": {
+      "A": {
+        "text": "useState = ''",
+        "feedback": "Incorrect. This is not valid useState syntax.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "useState('')",
+        "feedback": "Correct! Passing '' sets the initial state to an empty string.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "state('')",
+        "feedback": "Incorrect. state() is not a React hook.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "setState('')",
+        "feedback": "Incorrect. setState is used to update state, not initialize it.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-46",
+    "kcId": "kc-10",
+    "question": "How do you correctly add TypeScript type information to useState for a number?",
+    "options": {
+      "A": {
+        "text": "useState<number>(0)",
+        "feedback": "Correct! This explicitly tells TypeScript the state is a number.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "useState(0:number)",
+        "feedback": "Incorrect. This is not valid TypeScript syntax.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "useState<number> = 0",
+        "feedback": "Incorrect. This is not valid hook syntax.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useState(0)",
+        "feedback": "This works in JavaScript, but it does not provide explicit type information in TypeScript.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-47",
+    "kcId": "kc-10",
+    "question": "What is the correct way to type a string state variable in useState?",
+    "options": {
+      "A": {
+        "text": "useState<string>('')",
+        "feedback": "Correct! This explicitly types the state as a string.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "useState(string)",
+        "feedback": "Incorrect. TypeScript types are not passed like function arguments.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "useState<'string'>('')",
+        "feedback": "Incorrect. 'string' is a type keyword, not a string literal type.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useState = string('')",
+        "feedback": "Incorrect syntax for both TypeScript and React.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-48",
+    "kcId": "kc-10",
+    "question": "Why would you add a type to useState in TypeScript?",
+    "options": {
+      "A": {
+        "text": "To make React run faster",
+        "feedback": "Incorrect. Types do not affect runtime performance.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "To allow React to auto-generate components",
+        "feedback": "Incorrect. Types are for compile-time checking, not code generation.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "To ensure the state value always matches an expected type",
+        "feedback": "Correct! TypeScript helps prevent incorrect values from being assigned to state.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "To prevent React from re-rendering",
+        "feedback": "Incorrect. Types have no effect on rendering behavior.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-49",
+    "kcId": "kc-10",
+    "question": "Which of the following correctly types a boolean state?",
+    "options": {
+      "A": {
+        "text": "useState<boolean>(true)",
+        "feedback": "Correct! This correctly types the state as a boolean.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "useState<bool>(true)",
+        "feedback": "Incorrect. 'bool' is not a TypeScript type.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "useState(true:boolean)",
+        "feedback": "Incorrect syntax.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useState<boolean = true>",
+        "feedback": "Incorrect TypeScript syntax.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-50",
+    "kcId": "kc-10",
+    "question": "What is wrong with this code?\n\nconst [count, setCount] = useState<number>();",
+    "options": {
+      "A": {
+        "text": "Nothing is wrong",
+        "feedback": "Incorrect. A default value should usually be provided.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "The type annotation is missing",
+        "feedback": "Incorrect. The type annotation is actually present.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "No initial value is provided",
+        "feedback": "Correct! The state has a type but no initial value.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "setCount is incorrectly named",
+        "feedback": "Incorrect. The setter naming is fine.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+
+  {
+    "id": "q-51",
+    "kcId": "kc-11",
+    "question": "What is array destructuring in useState?",
+    "options": {
+      "A": {
+        "text": "A way to split an array into multiple variables",
+        "feedback": "Correct! useState returns an array that is unpacked into variables.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "A way to merge arrays together",
+        "feedback": "Incorrect. That is array concatenation, not destructuring.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "A way to loop through arrays",
+        "feedback": "Incorrect. That is iteration.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "A way to copy objects",
+        "feedback": "Incorrect. That is object spreading.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-52",
+    "kcId": "kc-11",
+    "question": "What does this code do?\n\nconst [value, setValue] = useState(0);",
+    "options": {
+      "A": {
+        "text": "Creates an object with value and setValue",
+        "feedback": "Incorrect. useState returns an array, not an object.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "Uses array destructuring to assign two variables",
+        "feedback": "Correct! The array returned by useState is unpacked into two variables.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "Creates a loop over state values",
+        "feedback": "Incorrect. No looping is involved.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Defines two independent state variables",
+        "feedback": "Incorrect. This creates one state value and one setter.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-53",
+    "kcId": "kc-11",
+    "question": "Why do we use square brackets in useState?",
+    "options": {
+      "A": {
+        "text": "Because useState returns an array",
+        "feedback": "Correct! Array destructuring is used because useState returns a pair in an array.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "Because useState returns an object",
+        "feedback": "Incorrect. It returns an array, not an object.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "Because square brackets are required in JSX",
+        "feedback": "Incorrect. This is unrelated to JSX rules.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "Because React requires bracket notation for functions",
+        "feedback": "Incorrect. This is not a React rule.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-54",
+    "kcId": "kc-11",
+    "question": "Which part of this statement is array destructuring?\n\nconst [count, setCount] = useState(0);",
+    "options": {
+      "A": {
+        "text": "useState(0)",
+        "feedback": "Incorrect. This is the hook call, not destructuring.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "[count, setCount]",
+        "feedback": "Correct! This is array destructuring assigning returned values.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "const",
+        "feedback": "Incorrect. This is a variable declaration keyword.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "0",
+        "feedback": "Incorrect. This is the initial value.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-55",
+    "kcId": "kc-11",
+    "question": "What happens if you do NOT use array destructuring with useState?",
+    "options": {
+      "A": {
+        "text": "You cannot access the state value and setter properly",
+        "feedback": "Correct! Without destructuring, you cannot cleanly access both returned values.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "React will crash immediately",
+        "feedback": "Incorrect. React will not crash just because destructuring is missing.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "State will not update anymore",
+        "feedback": "Incorrect. State still works internally.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "JSX will stop working",
+        "feedback": "Incorrect. JSX is unrelated to destructuring.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-56",
+    "kcId": "kc-12",
+    "question": "In the following code, which variable is the state variable?\n\nconst [count, setCount] = useState(0);",
+    "options": {
+      "A": {
+        "text": "setCount",
+        "feedback": "Incorrect. setCount is the function used to update state.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "useState",
+        "feedback": "Incorrect. useState is the hook, not the stored value.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "count",
+        "feedback": "Correct! count is the state variable that holds the current value.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "0",
+        "feedback": "Incorrect. 0 is only the initial value passed into useState.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.05,
+    "pGuess": 0.4
+  },
+  {
+    "id": "q-57",
+    "kcId": "kc-12",
+    "question": "Which part of this code represents the state variable?\n\nconst [name, setName] = useState('Bob');",
+    "options": {
+      "A": {
+        "text": "setName",
+        "feedback": "Incorrect. setName is the updater function.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "'Bob'",
+        "feedback": "Incorrect. 'Bob' is the initial value, not the variable.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "name",
+        "feedback": "Correct! name stores the current state value.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "Incorrect. useState is the hook.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-58",
+    "kcId": "kc-12",
+    "question": "What does the state variable store?",
+    "options": {
+      "A": {
+        "text": "The function that updates state",
+        "feedback": "Incorrect. That is the state function.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "The current value of state",
+        "feedback": "Correct! The state variable holds the current state value.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "The JSX of the component",
+        "feedback": "Incorrect. State does not store JSX.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "The component props",
+        "feedback": "Incorrect. Props are separate from state.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.05,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-59",
+    "kcId": "kc-12",
+    "question": "In this code, what is the state variable?\n\nconst [score, setScore] = useState(10);",
+    "options": {
+      "A": {
+        "text": "setScore",
+        "feedback": "Incorrect. setScore updates the state but does not store it.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "score",
+        "feedback": "Correct! score is the state variable.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "10",
+        "feedback": "Incorrect. 10 is the initial value.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "Incorrect. useState is the hook itself.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-60",
+    "kcId": "kc-12",
+    "question": "Which value changes when state is updated?",
+    "options": {
+      "A": {
+        "text": "The state variable",
+        "feedback": "Correct! The state variable updates when setState is called.",
+        "isCorrect": true
+      },
+      "B": {
+        "text": "The useState function",
+        "feedback": "Incorrect. useState itself does not change.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "The component name",
+        "feedback": "Incorrect. The component identity does not change.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "The import statement",
+        "feedback": "Incorrect. Imports are static.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.4
+  },
+
+  {
+    "id": "q-61",
+    "kcId": "kc-13",
+    "question": "In the code below, which is the state function?\n\nconst [count, setCount] = useState(0);",
+    "options": {
+      "A": {
+        "text": "count",
+        "feedback": "Incorrect. count is the state variable.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "setCount",
+        "feedback": "Correct! setCount is the function used to update state.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "0",
+        "feedback": "Incorrect. 0 is the initial value.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "Incorrect. useState is the hook.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.1,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-62",
+    "kcId": "kc-13",
+    "question": "Which value is used to update state in useState?",
+    "options": {
+      "A": {
+        "text": "The state variable",
+        "feedback": "Incorrect. The state variable holds the value but does not update it.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "The state function",
+        "feedback": "Correct! The state function (setter) updates the state.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "The component props",
+        "feedback": "Incorrect. Props are unrelated to updating state.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "The JSX return value",
+        "feedback": "Incorrect. JSX is the UI output, not state logic.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-63",
+    "kcId": "kc-13",
+    "question": "What is the correct role of setState in React?",
+    "options": {
+      "A": {
+        "text": "To store the current state value",
+        "feedback": "Incorrect. The state variable stores the value.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "To create new components",
+        "feedback": "Incorrect. setState does not create components.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "To update the state variable and trigger a re-render",
+        "feedback": "Correct! The state function updates state and triggers a re-render.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "To read props from a component",
+        "feedback": "Incorrect. Props are separate from state updates.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.2,
+    "pGuess": 0.2
+  },
+  {
+    "id": "q-64",
+    "kcId": "kc-13",
+    "question": "In this example, which is the state function?\n\nconst [name, setName] = useState('Alice');",
+    "options": {
+      "A": {
+        "text": "name",
+        "feedback": "Incorrect. name is the state variable.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "'Alice'",
+        "feedback": "Incorrect. 'Alice' is the initial value.",
+        "isCorrect": false
+      },
+      "C": {
+        "text": "setName",
+        "feedback": "Correct! setName updates the state value.",
+        "isCorrect": true
+      },
+      "D": {
+        "text": "useState",
+        "feedback": "Incorrect. useState is the hook.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.3
+  },
+  {
+    "id": "q-65",
+    "kcId": "kc-13",
+    "question": "What happens when you call the state function returned by useState?",
+    "options": {
+      "A": {
+        "text": "It directly changes the variable in memory without re-rendering",
+        "feedback": "Incorrect. React triggers a re-render when state updates.",
+        "isCorrect": false
+      },
+      "B": {
+        "text": "It updates state and causes the component to re-render",
+        "feedback": "Correct! The state function updates state and triggers a re-render.",
+        "isCorrect": true
+      },
+      "C": {
+        "text": "It deletes the previous state",
+        "feedback": "Incorrect. State is updated, not deleted.",
+        "isCorrect": false
+      },
+      "D": {
+        "text": "It stops the component from rendering",
+        "feedback": "Incorrect. It actually causes a re-render.",
+        "isCorrect": false
+      }
+    },
+    "pSlip": 0.15,
+    "pGuess": 0.2
   }
 ]
